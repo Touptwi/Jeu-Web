@@ -2,16 +2,33 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Web Game</title>
+		<title>Web Game</title>                                                                    
 		<meta name="author" content="monsinjon_soullard">
 		<link rel= "stylesheet" href="game.css">
 	</head>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="welcom_script.js"></script>
+	
 	<body id="background">
 		<table id="menu">
-			<td>Inscription</td><tr>
-			<td>Player1</td><tr>
-			<td>Player2</td><tr>
+			<td>INSCRIPTION</td><tr>
+			<td>Nickname: <input id="nickname" type="text"><select id="level">	<option>Débutant</option>
+																				<option>Amateur</option>
+																				<option>Expert</option></select></td><tr>
+															
+			<td><input type="Button" value="Add" onclick="add()"></td><tr>
+			
+			<td><table>	<td><input type="Button" value="Start" onclick="start()"></td>
+						<td><input type="Button" value="Refresh" onclick="refresh()"></td><tr>
+				</table></td><tr>
+				
+			<td><table id="listplayers">
+				<td>Player1</td><td>Débutant</td><tr>
+				<td>Player2</td><td>Amateur</td><tr>
+				<td>Player3</td><td>Expert</td><tr>
+			</table></td>
+			
 		</table>
 	</body>
 <html>

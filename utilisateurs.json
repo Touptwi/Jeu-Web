@@ -1,10 +1,18 @@
 [
     {
-        "nom": "test",
-        "niveau": "debutant"
+        "nom": "Orlane",
+        "niveau": "D\u00e9butant"
     },
     {
-        "nom": "test",
-        "niveau": "debutant"
+        "nom": "Jimmy",
+        "niveau": "D\u00e9butant"
+    },
+    {
+        "nom": "azer",
+        "niveau": "D\u00e9butant"
+    },
+    {
+        "nom": "colin",
+        "niveau": "Expert"
     }
 ]
