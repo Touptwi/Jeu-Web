@@ -4,11 +4,9 @@
 	$niveau = $_GET['niveau'];
 	//$numero = $_GET['numero'];
 	
-	$element = array('nom' => $nom, 'niveau' => $niveau);
-	
-	$file = json_decode(file_get_contents("utilisateurs.json"));
-	
-	array_push($file,$element);
+	$file = json_decode(file_get_contents("utilisateurs.json"), true);
+
+	$file[] = ['nom' => $nom, 'niveau' => $niveau];
 	
 	file_put_contents("utilisateurs.json",json_encode($file,JSON_PRETTY_PRINT));
 	
