@@ -7,22 +7,8 @@
         "nom": "Jack",
         "niveau": "D\u00e9butant"
     },
-<<<<<<< HEAD
-    {
-        "nom": "azer",
-        "niveau": "D\u00e9butant"
-    },
-    {
-        "nom": "dfsfgs",
-        "niveau": "D\u00e9butant"
-    },
-    {
-        "nom": null,
-        "niveau": null
-=======
     "6": {
         "nom": "Pierre",
         "niveau": "Expert"
->>>>>>> 590508cfe8810c94672aebdf05e540a658408a67
     }
 }
