@@ -13,4 +13,6 @@
     }
 	
 	file_put_contents("utilisateurs.json",json_encode($file,JSON_PRETTY_PRINT));
+
+echo		'<input type="Button" value="Join" onclick="join()">';
 ?>

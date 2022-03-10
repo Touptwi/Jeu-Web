@@ -7,26 +7,13 @@ function join(){
         data: {"nom": nickname,
         		"niveau": level}
       }).done(function(e) {
-        joined();
+        $("#join_b").empty();
+        $("#join_b").append(e);
         refresh();
       }).fail(function(e) {
         console.log(e);
         $("#message").html("<span class='ko'> Error: network problem </span>");
       });
-}
-
-function joined(){
-  $.ajax({
-    method: "GET",
-    url: "joined.php",
-    data: {}
-  }).done(function(e) {
-    $("#join_b").empty();
-    $("#join_b").append(e);
-  }).fail(function(e) {
-    console.log(e);
-    $("#message").html("<span class='ko'> Error: network problem </span>");
-  });
 }
 
 function leave(){
@@ -36,26 +23,13 @@ function leave(){
         url: "desinscription.php",
         data: {"nom": nickname}
       }).done(function(e) {
-        leaved();
+        $("#join_b").empty();
+        $("#join_b").append(e);
         refresh();
       }).fail(function(e) {
         console.log(e);
         $("#message").html("<span class='ko'> Error: network problem </span>");
       });
-}
-
-function leaved(){
-  $.ajax({
-    method: "GET",
-    url: "leaved.php",
-    data: {}
-  }).done(function(e) {
-    $("#join_b").empty();
-    $("#join_b").append(e);
-  }).fail(function(e) {
-    console.log(e);
-    $("#message").html("<span class='ko'> Error: network problem </span>");
-  });
 }
 
 function refresh(){

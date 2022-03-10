@@ -1,8 +1,4 @@
 {
-    "4": {
-        "nom": "Monica",
-        "niveau": "Amateur"
-    },
     "5": {
         "nom": "Jack",
         "niveau": "D\u00e9butant"
@@ -10,5 +6,9 @@
     "6": {
         "nom": "Pierre",
         "niveau": "Expert"
+    },
+    "7": {
+        "nom": "Monica",
+        "niveau": "Amateur"
     }
 }
