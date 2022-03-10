@@ -1,14 +1,14 @@
-[
-    {
-        "nom": "Orlane",
+{
+    "4": {
+        "nom": "Monica",
+        "niveau": "Amateur"
+    },
+    "5": {
+        "nom": "Jack",
         "niveau": "D\u00e9butant"
     },
-    {
-        "nom": "Jimmy",
-        "niveau": "D\u00e9butant"
-    },
-    {
-        "nom": "azer",
-        "niveau": "D\u00e9butant"
+    "6": {
+        "nom": "Pierre",
+        "niveau": "Expert"
     }
-]
+}
