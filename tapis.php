@@ -6,7 +6,9 @@
 		<title>Web Game</title>                                                                    
 		<meta name="author" content="monsinjon_soullard">
 		<link rel= "stylesheet" href="game.css">
-	</head>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <html>
@@ -30,7 +32,13 @@
 		</div>
 
 		<div id = "zone-jeu">
-			test
+			zone jeu
+			
+		</div>
+
+		<div id = "pioche">
+			pioche
+			<img src = "nouveau dossier/carte_Autre_3.png">
 		</div>
 	</body>
 </html>

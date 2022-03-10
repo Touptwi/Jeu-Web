@@ -70,3 +70,9 @@ td {
 	grid-row: 3;
 	grid-column: 3;
 }
+
+#pioche{
+
+	grid-row: 3;
+	grid-column: 4;
+}
