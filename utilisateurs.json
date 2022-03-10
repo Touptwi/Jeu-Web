@@ -3,12 +3,29 @@
         "nom": "Jack",
         "niveau": "D\u00e9butant"
     },
+<<<<<<< HEAD
+    {
+        "nom": "azer",
+        "niveau": "D\u00e9butant"
+    },
+    {
+        "nom": "dfsfgs",
+        "niveau": "D\u00e9butant"
+    },
+    {
+        "nom": null,
+        "niveau": null
+=======
     "6": {
         "nom": "Pierre",
         "niveau": "Expert"
+<<<<<<< HEAD
     },
     "7": {
         "nom": "Monica",
         "niveau": "Amateur"
+=======
+>>>>>>> 590508cfe8810c94672aebdf05e540a658408a67
+>>>>>>> 2edd4a8b5bc73b12116679a6adb751973fc1e395
     }
 }
