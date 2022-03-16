@@ -1,19 +1,22 @@
-<?php
-?>
+
 
 <head>
 		<meta charset="utf-8">
-		<title>Web Game</title>                                                                    
+		<title>Web Game</title>
 		<meta name="author" content="monsinjon_soullard">
 		<link rel= "stylesheet" href="game.css">
 </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="tapis_script.js"></script>
+
+</script>
 
 
+<!DOCTYPE html>
 <html>
 	<body class = "terrain" id = 'background'>
-		
+
 
 		<div class = 'main' id = 'J'>
 			moi
@@ -33,12 +36,12 @@
 
 		<div id = "zone-jeu">
 			zone jeu
-			
+
 		</div>
 
 		<div id = "pioche">
 			pioche
-			<img src = "nouveau dossier/carte_Autre_3.png">
+			<img src = "nouveau dossier\carte_Autres_3.png">
 		</div>
 	</body>
 </html>

@@ -29,6 +29,11 @@ td {
 /* style utilisé par tapis.php */
 /*******************************/
 
+img{
+	object-fit:scale-down;
+
+}
+
 .pioche{
 	width:5%;
 }
