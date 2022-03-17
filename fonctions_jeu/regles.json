@@ -61,7 +61,7 @@
   "distribution":
   {
     "nb_paquets":4,
-    "nb_cartes":27
+    "nb_cartes":3
   },
 
   "eval_zone_jeu":"eval_zone_jeu.php",

@@ -26,19 +26,15 @@ shuffle($pioche);
 $regle_distribution = $json_regles["distribution"];
 $paquet_liste = [];
 
-for($i = 0; $i < $regle_distribution["nb_paquets"] ;$i++)
+for ($nb_paquet = 0; $nb_paquet < $regle_distribution["nb_paquets"] ; $nb_paquet ++)
 {
-  array_push($paquet_liste,[]);
-}
-
-{
+  $paquet = [];
   for ($i = 0; $i < $regle_distribution["nb_cartes"] ; $i++)
   {
     $val = array_pop($pioche); 
-    echo "$val <br>";
     array_push($paquet,$val);
   }
-  echo "$paquet_liste<br>";
+  array_push($paquet_liste,$paquet);
 }
 ////////////////////////////////////////////////////////////
 
