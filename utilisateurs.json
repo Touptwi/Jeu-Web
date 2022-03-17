@@ -1,14 +1,22 @@
-[
-    {
+{
+    "42": {
         "nom": "Monica",
         "niveau": "Amateur"
     },
-    {
+    "1": {
         "nom": "Jack",
         "niveau": "D\u00e9butant"
     },
-    {
+    "999": {
         "nom": "Pierre",
         "niveau": "Expert"
+    },
+    "6": {
+        "nom": "Samuel",
+        "niveau": "D\u00e9butant"
+    },
+    "908": {
+        "nom": "Test",
+        "niveau": "D\u00e9butant"
     }
-]
+}
