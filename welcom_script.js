@@ -9,7 +9,7 @@ function join(){
       }).done(function(e) {
         $("#join_b").empty();
         $("#join_b").append(e);
-        refresh();
+        refreshplayer();
       }).fail(function(e) {
         console.log(e);
         $("#message").html("<span class='ko'> Error: network problem </span>");
@@ -25,19 +25,20 @@ function leave(){
       }).done(function(e) {
         $("#join_b").empty();
         $("#join_b").append(e);
-        refresh();
+        refreshplayer();
       }).fail(function(e) {
         console.log(e);
         $("#message").html("<span class='ko'> Error: network problem </span>");
       });
 }
 
-function refresh(){
+function refreshplayer(){
   $.ajax({
     method: "GET",
     url: "listplayers.php",
     data: {}
   }).done(function(e) {
+    console.log(e);
     $("#listplayers").empty();
     $("#listplayers").append(e);
   }).fail(function(e) {
