@@ -27,11 +27,11 @@ function refresh()
         data: {"id_joueur":1,"numero_partie":1}
     }).done(function(e) {
       $("#J").empty();
-      //console.log (e);
+      console.log (e);
       $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)")
       for (let i = 0; i < e.main_joueur.length; i++)
       {
-        $("#J").append("<div>" + e.main_joueur[i] + "</div>");
+        $("#J").append("<div>" + e.main_joueur[i] + " <button value = ></div>");
       }
       if(e.pioche != [])
       {
@@ -42,6 +42,11 @@ function refresh()
       {
         $("#pioche").empty();
         $("#pioche").append("pioche:<br>false");
+      }
+
+      for (let i = 0; i < e.main_joueur.length; i++)
+      {
+        $("#zone-jeu").append("<div>" + e.zone_jeu[i] + "</div>");
       }
 
     }).fail(function(e){

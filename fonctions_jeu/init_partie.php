@@ -11,7 +11,7 @@ $json_partie = json_decode(file_get_contents('../partie_' . $numero_partie.'.jso
 
 $json_regles = json_decode(file_get_contents("regles.json"),true);
 
-//distribution sera ensuite paramétrée par le fichier rules.json
+//la distribution 
 
 $pioche = [];
 $carte = array_keys($json_regles["cartes"]);
@@ -41,12 +41,18 @@ for ($nb_paquet = 0; $nb_paquet < $regle_distribution["nb_paquets"] ; $nb_paquet
 $json_partie['pioche'] = $pioche;
 
 $liste_mains = [];
-for($i = 0; $i < count($json_partie["joueurs"]);$i++)
+
+$nb_joueurs = count($json_partie["joueurs"]);
+
+
+$json_partie['zone_jeu'] = [];
+for($i = 0; $i < $nb_joueurs ;$i++)
 {
   $json_partie["joueurs"][$i]["main"] = $paquet_liste[$i];
   $json_partie["joueurs"][$i]["plis"] = [];
+  array_push($json_partie['zone_jeu'],0);
 }
-$json_partie['zone_jeu'] = [];
+
 
 
 file_put_contents('../partie_'. $numero_partie.'.json', json_encode($json_partie,JSON_PRETTY_PRINT));

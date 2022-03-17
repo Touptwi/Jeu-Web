@@ -25,3 +25,5 @@ for($i = 0; $i < count($data["joueurs"]); $i++)
 }
 echo json_encode($result);
  ?>
+
+
