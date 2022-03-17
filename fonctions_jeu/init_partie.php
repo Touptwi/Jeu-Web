@@ -15,17 +15,17 @@ $json_regles = json_decode(file_get_contents("regles.json"),true);
 
 $json_partie["joueurs"] = $json_utilisateurs;
 
-echo $json_partie["joueurs"];
+$json_partie["numero_joueur_actuelle"] = 0;
+$json_partie["numero_tour"] = 0;
 
-//la distribution 
+//la distribution
 
 $pioche = [];
 $carte = array_keys($json_regles["cartes"]);
 
 foreach ($carte as $val)
 {
-        array_push($pioche, $val);
-
+  array_push($pioche, $val);
 }
 shuffle($pioche);
 
@@ -37,7 +37,7 @@ for ($nb_paquet = 0; $nb_paquet < $regle_distribution["nb_paquets"] ; $nb_paquet
   $paquet = [];
   for ($i = 0; $i < $regle_distribution["nb_cartes"] ; $i++)
   {
-    $val = array_pop($pioche); 
+    $val = array_pop($pioche);
     array_push($paquet,$val);
   }
   array_push($paquet_liste,$paquet);
@@ -46,17 +46,14 @@ for ($nb_paquet = 0; $nb_paquet < $regle_distribution["nb_paquets"] ; $nb_paquet
 
 $json_partie['pioche'] = $pioche;
 
-$liste_mains = [];
-
-$nb_joueurs = count($json_partie["joueurs"]);
-
-
 $json_partie['zone_jeu'] = [];
-for($i = 0; $i < $nb_joueurs ;$i++)
-{
-  $json_partie["joueurs"][$i]["main"] = $paquet_liste[$i];
+$numero_paquet = 0;
+foreach (array_keys($json_partie["joueurs"]) as $i ) {
+  $json_partie["joueurs"][$i]["main"] = $paquet_liste[$numero_paquet];
   $json_partie["joueurs"][$i]["plis"] = [];
   array_push($json_partie['zone_jeu'],0);
+
+  $numero_paquet++;
 }
 
 
