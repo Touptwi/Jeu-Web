@@ -7,9 +7,15 @@
 
 $numero_partie = $_GET['numero_partie'];
 
+$json_utilisateurs = json_decode(file_get_contents("../utilisateurs.json"),true);
+
 $json_partie = json_decode(file_get_contents('../partie_' . $numero_partie.'.json'),true);
 
 $json_regles = json_decode(file_get_contents("regles.json"),true);
+
+$json_partie["joueurs"] = $json_utilisateurs;
+
+echo $json_partie["joueurs"];
 
 //la distribution 
 
