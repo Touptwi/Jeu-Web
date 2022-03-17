@@ -23,11 +23,16 @@ function refresh()
     $.ajax({
         method: "GET",
         datatype: "json",
-        url:"fonctions_jeu\\refresh.php",
+        url:"fonctions_jeu/refresh.php",
         data: {"id_joueur":1,"numero_partie":1}
     }).done(function(e) {
       $("#J").empty();
-      $("#J").append(e.main);
+      //console.log (e);
+      $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)")
+      for (let i = 0; i < e.main_joueur.length; i++)
+      {
+        $("#J").append("<div>" + e.main_joueur[i] + "</div>");
+      }
       if(e.pioche != [])
       {
         $("#pioche").empty();

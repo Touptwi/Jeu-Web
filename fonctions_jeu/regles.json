@@ -1,5 +1,5 @@
 {
-  "puissance":
+  "cartes":
   {
     "101":{"puissance":13},
     "102":{"puissance":1},
@@ -55,12 +55,12 @@
     "410":{"puissance":9},
     "411":{"puissance":10},
     "412":{"puissance":12},
-    "413":{"puissance":12},
+    "413":{"puissance":12}
   },
 
   "distribution":
   {
-    "nb_paquet":4,
+    "nb_paquets":4,
     "nb_cartes":27
   },
 

@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 
 <head>
 		<meta charset="utf-8">
@@ -12,8 +12,6 @@
 
 </script>
 
-
-<!DOCTYPE html>
 <html>
 	<body class = "terrain" id = 'background'>
 
@@ -42,6 +40,8 @@
 		<div id = "pioche">
 			pioche
 			<img src = "nouveau dossier\carte_Autres_3.png">
+
+		
 		</div>
 	</body>
 </html>
