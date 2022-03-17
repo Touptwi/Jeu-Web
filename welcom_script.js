@@ -45,3 +45,17 @@ function refresh(){
     $("#message").html("<span class='ko'> Error: network problem </span>");
   });
 }
+
+function start(){
+  $.ajax({
+    method: "GET",
+    url: "tapis.php",
+    data: {}
+  }).done(function(e) {
+    $("body").empty();
+    $("body").append(e);
+  }).fail(function(e) {
+    console.log(e);
+    $("#message").html("<span class='ko'> Error: network problem </span>");
+  });
+}

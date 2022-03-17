@@ -39,6 +39,7 @@ img{
 }
 
 .terrain {
+	min-height: 100%;
 	display: grid;
 	grid-auto-columns: 20%;
 	grid-auto-rows: 20%;
