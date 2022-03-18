@@ -13,7 +13,7 @@
 
 	setcookie("id_player", $id_player, time() + 2*3600,);
 
-	$file[$id_player] = ['nom' => $nom, 'niveau' => $niveau];
+	$file[$id_player] = ['nom' => strip_tags($nom), 'niveau' => $niveau];
 	
 	file_put_contents("utilisateurs.json",json_encode($file,JSON_PRETTY_PRINT));
 

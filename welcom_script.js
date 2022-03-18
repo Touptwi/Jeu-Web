@@ -22,11 +22,10 @@ function join(){
 }
 
 function leave(){
-  let nickname = document.getElementById('nickname').value;
       $.ajax({
         method: "GET",
         url: "desinscription.php",
-        data: {"nom": nickname}
+        data: {}
       }).done(function(e) {
         $("#join_b").attr('value', 'Join');
         $("#join_b").attr('onclick', 'join()');
