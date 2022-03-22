@@ -10,7 +10,7 @@ $result = array();
 $result["pioche"] = count($data["pioche"]);
 $result["zone_jeu"] = $data["zone_jeu"];
 $result["adversaire"] = array();
-for($i = 0; $i < count($data["joueurs"]); $i++)
+foreach(array_keys($data["joueurs"]) as $i)
 {
   if($i == $_GET["id_joueur"])
   {
@@ -25,5 +25,3 @@ for($i = 0; $i < count($data["joueurs"]); $i++)
 }
 echo json_encode($result);
  ?>
-
-

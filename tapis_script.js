@@ -1,5 +1,5 @@
 
-//setInterval(refresh, 1000);
+setInterval(refresh, 500);
 
 function get_cookie_value(cname)
 {
@@ -27,11 +27,11 @@ function refresh()
         data: {"id_joueur":1,"numero_partie":1}
     }).done(function(e) {
       $("#J").empty();
-      console.log (e);
+      //console.log (e);
       $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)")
       for (let i = 0; i < e.main_joueur.length; i++)
       {
-        $("#J").append("<div>" + e.main_joueur[i] + " <button value = ></div>");
+        $("#J").append("<div onclick = 'jouer_carte("+i+")'>" + e.main_joueur[i]);
       }
       if(e.pioche != [])
       {
@@ -44,6 +44,7 @@ function refresh()
         $("#pioche").append("pioche:<br>false");
       }
 
+      $("#zone-jeu").empty();
       for (let i = 0; i < e.main_joueur.length; i++)
       {
         $("#zone-jeu").append("<div>" + e.zone_jeu[i] + "</div>");
@@ -52,4 +53,20 @@ function refresh()
     }).fail(function(e){
       console.log("on a un problème dans refresh");
     })
+}
+
+function jouer_carte(carte)
+{
+  console.log("on joue une carte");
+  $.ajax({
+    method: "GET",
+    url: "fonctions_jeu/jouer_carte.php",
+    data:{"id_joueur":1,"numero_partie":1,"id_carte":carte}
+
+  }).done(function(e){
+    console.log("ça marche");
+  }).fail(function(e){
+    console.log("erreur jouer carte");
+  })
+  return;
 }
