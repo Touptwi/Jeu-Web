@@ -6,9 +6,16 @@
  */
 
 $numero_partie = $_GET['numero_partie'];
+$id_joueur = $_GET['id_joueur'];
 
-$json_utilisateurs = json_decode(file_get_contents("../utilisateurs.json"),true);//on récupère les utilisateurs
+if($id_joueur <= 1000)
+{
+  return;
+}
 
+$json_utilisateurs_liste = json_decode(file_get_contents("../utilisateurs.json"),true);//on récupère les utilisateurs
+$json_utilisateurs = $json_utilisateurs_liste[$numero_partie];
+echo json_encode($json_utilisateurs,JSON_PRETTY_PRINT);
 if (file_exists('../partie_' . $numero_partie.'.json')) //si la partie existe déjà on écrasera le fichier existant
 {
   $json_partie = json_decode(file_get_contents('../partie_' . $numero_partie.'.json'),true);
