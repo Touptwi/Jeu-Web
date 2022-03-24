@@ -1,11 +1,13 @@
 function join(){
 	let nickname = document.getElementById('nickname').value;
 	let level = document.getElementById('level').value;
+  let id_partie = document.getElementById('id_partie').value
       $.ajax({
         method: "GET",
         url: "inscription.php",
-        data: {"nom": nickname,
-        		"niveau": level}
+        data: { "nom": nickname,
+        		    "niveau": level,
+                "numero_partie": id_partie}
       }).done(function(e) {
         $("#join_b").attr('value', 'Leave');
         $("#join_b").attr('onclick', 'leave()');
@@ -22,10 +24,11 @@ function join(){
 }
 
 function leave(){
+  let id_partie = document.getElementById('id_partie').value
   $.ajax({
     method: "GET",
     url: "desinscription.php",
-    data: {}
+    data: {"numero_partie": id_partie}
   }).done(function(e) {
     $("#join_b").attr('value', 'Join');
     $("#join_b").attr('onclick', 'join()');
@@ -53,10 +56,11 @@ function checkJoined(){
 }
 
 function refreshPlayer(){
+  let id_partie = document.getElementById('id_partie').value
   $.ajax({
     method: "GET",
     url: "listplayers.php",
-    data: {}
+    data: {"numero_partie": id_partie}
   }).done(function(e) {
     $("#listplayers").empty();
     $("#listplayers").append(e);

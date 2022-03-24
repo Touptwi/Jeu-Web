@@ -1,5 +1,10 @@
 <?php
-	$users = json_decode(file_get_contents('utilisateurs.json'));
+	$id_partie = $_GET['numero_partie'];
+
+	$file = json_decode(file_get_contents('utilisateurs.json'), true);
+
+	$users = $file[$id_partie];
+	
 echo		"<tbody>";
 		foreach($users as $i) {
 			$nom = $i -> nom;

@@ -1,8 +1,14 @@
 <?php
 
+	$id_party = $_GET['numero_partie'];
+
 	$file = json_decode(file_get_contents("utilisateurs.json"), true);
 	
-	unset($file[$_COOKIE["id_player"]]);
+	unset($file[$id_party][$_COOKIE["id_player"]]);
+
+	if($_COOKIE["id_player"] > 1000) {
+		unset($file[$id_party]);
+	}
 
 	setcookie("id_player", "", time() - 3600);
 
