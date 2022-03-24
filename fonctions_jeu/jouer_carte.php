@@ -9,23 +9,21 @@ $path_file = "../partie_" . $numero_partie . ".json";
 
 
 $partie = fopen($path_file, "r+");
-echo "le fichier fait: ".filesize($path_file);
-
 
 if (!flock($partie, LOCK_EX))
    http_response_code(409); // conflict
 $jsonString = fread($partie, filesize($path_file));
-$json_partie = json_decode($jsonString, true); 
+$json_partie = json_decode($jsonString, true);
 
 // ICI ON MODIFIE LE CONTENU COMME UN TABLEAU ASSOCIATIF
-    
+
     $joueur = $json_partie["joueurs"][$id_joueur];
 
     $carte = $joueur["main"][$id_carte];
     echo $carte;
 
     unset($json_partie["joueurs"][$id_joueur]["main"][$id_carte]);
-    
+
     $json_partie["joueurs"][$id_joueur]["main"] = array_values($json_partie["joueurs"][$id_joueur]["main"]);
 
     if ($json_partie["zone_jeu"][$id_joueur] != 0)
@@ -34,7 +32,7 @@ $json_partie = json_decode($jsonString, true);
         array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$id_joueur]);
     }
 
-    
+
     $json_partie["zone_jeu"][$id_joueur] = $carte;
 
 $newJsonString = json_encode($json_partie, JSON_PRETTY_PRINT);
