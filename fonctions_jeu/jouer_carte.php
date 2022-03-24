@@ -17,23 +17,31 @@ $json_partie = json_decode($jsonString, true);
 
 // ICI ON MODIFIE LE CONTENU COMME UN TABLEAU ASSOCIATIF
 
-    $joueur = $json_partie["joueurs"][$id_joueur];
-
-    $carte = $joueur["main"][$id_carte];
-    echo $carte;
-
-    unset($json_partie["joueurs"][$id_joueur]["main"][$id_carte]);
-
-    $json_partie["joueurs"][$id_joueur]["main"] = array_values($json_partie["joueurs"][$id_joueur]["main"]);
-
-    if ($json_partie["zone_jeu"][$id_joueur] != 0)
+    if($json_partie["numero_joueur_actuelle"] == $id_joueur) //si c'est au tour du joueur
     {
+        $joueur = $json_partie["joueurs"][$id_joueur];
 
-        array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$id_joueur]);
+        $carte = $joueur["main"][$id_carte];
+        if (array_key_exists($regle["cartes"][$id_carte]["regles_speciales"]))
+        {
+            include($regle["cartes"][$id_carte]["regles_speciales"]);
+        }
+        echo $carte;
+
+        unset($json_partie["joueurs"][$id_joueur]["main"][$id_carte]);
+
+        $json_partie["joueurs"][$id_joueur]["main"] = array_values($json_partie["joueurs"][$id_joueur]["main"]);
+
+        if ($json_partie["zone_jeu"][$id_joueur] != 0)
+        {
+
+            array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$id_joueur]);
+        }
+
+
+        $json_partie["zone_jeu"][$id_joueur] = $carte;
+
     }
-
-
-    $json_partie["zone_jeu"][$id_joueur] = $carte;
 
 $newJsonString = json_encode($json_partie, JSON_PRETTY_PRINT);
 ftruncate($partie, 0);

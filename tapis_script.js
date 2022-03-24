@@ -37,6 +37,7 @@ function refresh()
       {
         $("#pioche").empty();
         $("#pioche").append("pioche:<br>true");
+        $("#pioche").attr("onclick","piocher()");
       }
       else
       {
@@ -45,7 +46,7 @@ function refresh()
       }
 
       $("#zone-jeu").empty();
-      for (let i = 0; i < e.main_joueur.length; i++)
+      for (let i = 0; i < e.zone_jeu.length; i++)
       {
         $("#zone-jeu").append("<div>" + e.zone_jeu[i] + "</div>");
       }
@@ -57,16 +58,29 @@ function refresh()
 
 function jouer_carte(carte)
 {
-  console.log("on joue une carte");
   $.ajax({
     method: "GET",
     url: "fonctions_jeu/jouer_carte.php",
     data:{"id_joueur":1,"numero_partie":1,"id_carte":carte}
 
   }).done(function(e){
-    console.log("ça marche");
   }).fail(function(e){
-    console.log("erreur jouer carte");
+    console.log("erreur dans jouer_carte.php");
+  })
+  return;
+}
+
+function piocher()
+{
+  $.ajax({
+    method: "GET",
+    url: "fonctions_jeu/piocher_carte.php",
+    data:{"id_joueur":1,"numero_partie":1}
+
+  }).done(function(e){
+    console.log("tu as pioché");
+  }).fail(function(e){
+    console.log("erreur dans jouer_carte.php");
   })
   return;
 }
