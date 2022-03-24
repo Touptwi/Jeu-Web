@@ -1,5 +1,5 @@
 
-//setInterval(refresh, 1000);
+setInterval(refresh, 1000);
 
 function get_cookie_value(cname)
 {
@@ -44,12 +44,13 @@ function refresh()
         $("#pioche").append("pioche:<br>false");
       }
 
+      $("#zone-jeu").empty();
       for (let i = 0; i < e.main_joueur.length; i++)
       {
         $("#zone-jeu").append("<div>" + e.zone_jeu[i] + "</div>");
       }
 
     }).fail(function(e){
-      console.log("on a un problème dans refresh");
+      console.log("on a un problème dans refresh" + e);
     })
 }
