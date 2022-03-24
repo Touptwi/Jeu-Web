@@ -7,35 +7,38 @@
 
 $numero_partie = $_GET['numero_partie'];
 
-$json_utilisateurs = json_decode(file_get_contents("../utilisateurs.json"),true);
+$json_utilisateurs = json_decode(file_get_contents("../utilisateurs.json"),true);//on récupère les utilisateurs
 
-$json_partie = json_decode(file_get_contents('../partie_' . $numero_partie.'.json'),true);
+if (file_exists('../partie_' . $numero_partie.'.json')) //si la partie existe déjà on écrasera le fichier existant
+{
+  $json_partie = json_decode(file_get_contents('../partie_' . $numero_partie.'.json'),true);
+}else{
+  $json_partie = array();
+}
 
 $json_regles = json_decode(file_get_contents("regles.json"),true);
 
-$json_partie["joueurs"] = $json_utilisateurs;
+$json_partie["joueurs"] = $json_utilisateurs; //on récupère la liste des utilisateurs
 
-$json_partie["numero_joueur_actuelle"] = 0;
-$json_partie["numero_tour"] = 0;
+$json_partie["numero_joueur_actuelle"] = -1;
+$json_partie["numero_tour"] = -1;
 
 //la distribution
 
 $pioche = [];
-$carte = array_keys($json_regles["cartes"]);
 
-foreach ($carte as $val)
+foreach (array_keys($json_regles["cartes"]) as $val) //on génère les cartes d'après le fichier de règles
 {
   array_push($pioche, $val);
 }
-shuffle($pioche);
+shuffle($pioche); 
 
-$regle_distribution = $json_regles["distribution"];
 $paquet_liste = [];
 
-for ($nb_paquet = 0; $nb_paquet < $regle_distribution["nb_paquets"] ; $nb_paquet ++)
+for ($nb_paquet = 0; $nb_paquet <  $json_regles["distribution"]["nb_paquets"] ; $nb_paquet ++)
 {
   $paquet = [];
-  for ($i = 0; $i < $regle_distribution["nb_cartes"] ; $i++)
+  for ($i = 0; $i <  $json_regles["distribution"]["nb_cartes"] ; $i++)
   {
     $val = array_pop($pioche);
     array_push($paquet,$val);
@@ -48,16 +51,19 @@ $json_partie['pioche'] = $pioche;
 
 $json_partie['zone_jeu'] = [];
 $numero_paquet = 0;
-foreach (array_keys($json_partie["joueurs"]) as $i ) {
+
+foreach (array_keys($json_partie["joueurs"]) as $i ) { //on distribue les paquets créer lors de la distribution aux joueurs
   $json_partie["joueurs"][$i]["main"] = $paquet_liste[$numero_paquet];
   $json_partie["joueurs"][$i]["plis"] = [];
-  array_push($json_partie['zone_jeu'],0);
+  array_push($json_partie['zone_jeu'],0); //on génère une zone de jeu pour chaque joueur
 
   $numero_paquet++;
 }
 
-
-
 file_put_contents('../partie_'. $numero_partie.'.json', json_encode($json_partie,JSON_PRETTY_PRINT));
+
+//DEBUG
+
+//chmod('../partie_' . $numero_partie.'.json',0777); //permet la modification du fichier partie à la main
 
 ?>
