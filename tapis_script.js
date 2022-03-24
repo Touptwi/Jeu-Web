@@ -24,10 +24,10 @@ function refresh()
         method: "GET",
         datatype: "json",
         url:"fonctions_jeu/refresh.php",
-        data: {"id_joueur":1,"numero_partie":1}
+        data: {"id_joueur":get_cookie_value("id_player"),"numero_partie":1}
     }).done(function(e) {
       $("#J").empty();
-      //console.log (e);
+      console.log (get_cookie_value("id_player"));
       $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)")
       for (let i = 0; i < e.main_joueur.length; i++)
       {
@@ -61,7 +61,7 @@ function jouer_carte(carte)
   $.ajax({
     method: "GET",
     url: "fonctions_jeu/jouer_carte.php",
-    data:{"id_joueur":1,"numero_partie":1,"id_carte":carte}
+    data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":1,"id_carte":carte}
 
   }).done(function(e){
   }).fail(function(e){
@@ -75,7 +75,7 @@ function piocher()
   $.ajax({
     method: "GET",
     url: "fonctions_jeu/piocher_carte.php",
-    data:{"id_joueur":1,"numero_partie":1}
+    data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":1}
 
   }).done(function(e){
     console.log("tu as pioché");
