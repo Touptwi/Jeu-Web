@@ -22,21 +22,34 @@ function join(){
 }
 
 function leave(){
-      $.ajax({
-        method: "GET",
-        url: "desinscription.php",
-        data: {}
-      }).done(function(e) {
-        $("#join_b").attr('value', 'Join');
-        $("#join_b").attr('onclick', 'join()');
-        $("#nickname").attr('disabled', false);
-        $("#level").attr('disabled', false);
-        $("#start_b").attr('disabled', true);
-        refreshPlayer();
-      }).fail(function(e) {
-        console.log(e);
-        $("#message").html("<span class='ko'> Error: network problem </span>");
-      });
+  $.ajax({
+    method: "GET",
+    url: "desinscription.php",
+    data: {}
+  }).done(function(e) {
+    $("#join_b").attr('value', 'Join');
+    $("#join_b").attr('onclick', 'join()');
+    $("#nickname").attr('disabled', false);
+    $("#level").attr('disabled', false);
+    $("#start_b").attr('disabled', true);
+    refreshPlayer();
+  }).fail(function(e) {
+    console.log(e);
+    $("#message").html("<span class='ko'> Error: network problem </span>");
+  });
+}
+
+function checkJoined(){
+  if(getCookie("id_player")!="") {
+    $("#join_b").attr('value', 'Leave');
+    $("#join_b").attr('onclick', 'leave()');
+    $("#nickname").attr('disabled', true);
+    $("#level").attr('disabled', true);
+    if(getCookie("id_player")>1000) {
+      $("#start_b").attr('disabled', false);
+    }
+  }
+  refreshPlayer()
 }
 
 function refreshPlayer(){
