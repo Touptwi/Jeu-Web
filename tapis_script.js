@@ -84,3 +84,18 @@ function piocher()
   })
   return;
 }
+
+function init_partie()
+{
+  $.ajax({
+    method: "GET",
+    url: "fonctions_jeu/init_partie.php",
+    data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":1}
+
+  }).done(function(e){
+    console.log("tu as pioché");
+  }).fail(function(e){
+    console.log("erreur dans jouer_carte.php");
+  })
+  return;
+}

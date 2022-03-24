@@ -1,6 +1,6 @@
 <?php
 echo "
-<div class = 'terrain'>
+<div class = 'terrain' onload = 'init_partie()'>
 	<div class = 'main' id = 'J'>
 		moi
 	</div>

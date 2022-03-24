@@ -33,11 +33,10 @@ $json_partie = json_decode($jsonString, true);
 
         /*if ($json_partie["zone_jeu"][$id_joueur] != 0)
         {
-
             array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$id_joueur]);
         }*/
 
-
+        
         $id = 0;
         $liste_joueurs = array_keys($json_partie["joueurs"]);
 
