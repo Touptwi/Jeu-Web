@@ -29,17 +29,29 @@ $json_partie = json_decode($jsonString, true);
         echo $carte;
 
         unset($json_partie["joueurs"][$id_joueur]["main"][$id_carte]);
-
         $json_partie["joueurs"][$id_joueur]["main"] = array_values($json_partie["joueurs"][$id_joueur]["main"]);
 
-        if ($json_partie["zone_jeu"][$id_joueur] != 0)
+        /*if ($json_partie["zone_jeu"][$id_joueur] != 0)
         {
 
             array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$id_joueur]);
+        }*/
+
+
+        $id = 0;
+        $liste_joueurs = array_keys($json_partie["joueurs"]);
+
+        for($i = 0; $i < count($liste_joueurs); $i++)
+        {
+            if ($liste_joueurs[$i] == $id_joueur)
+            {
+                if($json_partie["zone_jeu"][$i] != 0)
+                {
+                    array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$i]);
+                }
+                $json_partie["zone_jeu"][$i] = $carte;
+            }
         }
-
-
-        $json_partie["zone_jeu"][$id_joueur] = $carte;
 
     }
 
