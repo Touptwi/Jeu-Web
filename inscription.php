@@ -11,7 +11,7 @@
 		$id_player += 1000;
 	}
 
-	setcookie("id_player", $id_player, time() + 2*3600,"","",true);
+	setcookie("id_player", $id_player, time() + 2*3600);
 
 	$file[$id_player] = ['nom' => strip_tags($nom), 'niveau' => $niveau];
 	
