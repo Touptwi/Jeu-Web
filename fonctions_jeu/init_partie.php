@@ -35,14 +35,14 @@ $json_partie["numero_tour"] = 1;
 
 $pioche = [];
 
-/*
+
 foreach (array_keys($json_regles["cartes"]) as $val) //on génère les cartes d'après le fichier de règles
 {
   array_push($pioche, $val);
 }
 shuffle($pioche); 
 
-
+/*
 $paquet_liste = [];
 
 for ($nb_paquet = 0; $nb_paquet <  $json_regles["distribution"]["nb_paquets"] ; $nb_paquet ++)
