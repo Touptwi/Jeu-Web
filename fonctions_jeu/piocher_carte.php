@@ -8,7 +8,7 @@
  * /!\ Il n'y a aucune limite sur cette fonctionalité. Un joueur peut donc piocher tant qu'il reste des cartes dans la pioche
  */
 
-$regle = json_decode(file_get_contents("regles.json"),true);
+$json_regle = json_decode(file_get_contents("regles.json"),true);
 
 $numero_partie = $_GET["numero_partie"];
 $id_joueur = $_GET["id_joueur"];
@@ -28,6 +28,7 @@ $json_partie = json_decode($jsonString, true);
     {
         if(count($json_partie["pioche"]) > 0)
             array_push($json_partie["joueurs"][$id_joueur]["main"],array_pop($json_partie["pioche"]));
+        
     }
 
 $newJsonString = json_encode($json_partie, JSON_PRETTY_PRINT);
@@ -36,5 +37,7 @@ fseek($partie,0);
 fwrite($partie, $newJsonString);
 flock($partie, LOCK_UN);
 fclose($partie);
+
+include("fin_partie.php");
 
 ?>

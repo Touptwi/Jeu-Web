@@ -1,8 +1,14 @@
 
 <?php
 /**
- * ce code doit être executé dans fin de tour lors du tour du serveur
+ * NECESSAIRE AU FONCTIONNEMENT DE LA PARTIE
+ * ce code est executé dans fin_tour.php lors du tour du serveur
  * Il doit lire le contenu de la zone de jeu est décidé quoi faire en fonction des cartes présente
+ * Parametres:
+ *  AUCUN
+ * Objets Accessibles:
+ *  $json_regles (lecture uniquement): un tableau associatif contenant l'ensemble des données de regles.json
+ *  $json_partie (lecture/ecriture): tableau associatif contenant l'etat du plateau de jeu
  * 
  * ici, le code verifie quelle joueur a posé la carte la plus forte d'après la puissance des cartes et
  * transfert le contenu de zone de jeu dans les plis du vainqueur

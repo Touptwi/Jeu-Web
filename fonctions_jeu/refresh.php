@@ -3,6 +3,7 @@
 header('Content-Type: application/json; charset=utf-8');
 
 $data = json_decode(file_get_contents("../partie_".$_GET['numero_partie'].".json"),true);
+$regle_json = json_decode(file_get_contents("../partie_".$_GET['numero_partie'].".json"),true);
 
 $result = array();
 
