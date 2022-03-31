@@ -1,6 +1,4 @@
 
-setInterval(refresh, 500);
-
 function get_cookie_value(cname)
 {
   let name = cname + "=";
@@ -20,15 +18,15 @@ function get_cookie_value(cname)
 
 function refresh()
 {
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
     $.ajax({
         method: "GET",
         datatype: "json",
         url:"fonctions_jeu/refresh.php",
-        data: {"id_joueur":get_cookie_value("id_player"),"numero_partie":1}
+        data: {"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie}
     }).done(function(e) {
-      $("#J").empty();
-      console.log (get_cookie_value("id_player"));
-      $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)")
+      $("#J").empty(); //on vide la zone du joueur
+      $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)") //on definit la taille du layout
       for (let i = 0; i < e.main_joueur.length; i++)
       {
         $("#J").append("<div onclick = 'jouer_carte("+i+")'>" + e.main_joueur[i]);
@@ -58,10 +56,11 @@ function refresh()
 
 function jouer_carte(carte)
 {
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
   $.ajax({
     method: "GET",
     url: "fonctions_jeu/jouer_carte.php",
-    data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":1,"id_carte":carte}
+    data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie,"id_carte":carte}
 
   }).done(function(e){
   }).fail(function(e){
@@ -72,10 +71,11 @@ function jouer_carte(carte)
 
 function piocher()
 {
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
   $.ajax({
     method: "GET",
     url: "fonctions_jeu/piocher_carte.php",
-    data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":1}
+    data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie}
 
   }).done(function(e){
     console.log("tu as pioché");
@@ -87,13 +87,17 @@ function piocher()
 
 function init_partie()
 {
+  console.log("initialisation partie"); 
+  setInterval(refresh, 500);
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
+  console.log(id_partie);
   $.ajax({
     method: "GET",
     url: "fonctions_jeu/init_partie.php",
-    data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":1}
+    data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie}
 
   }).done(function(e){
-    console.log("tu as pioché");
+    
   }).fail(function(e){
     console.log("erreur dans jouer_carte.php");
   })

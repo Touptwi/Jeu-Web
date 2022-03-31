@@ -27,8 +27,8 @@ $json_regles = json_decode(file_get_contents("regles.json"),true);
 
 $json_partie["joueurs"] = $json_utilisateurs; //on récupère la liste des utilisateurs
 
-$json_partie["numero_joueur_actuelle"] = -1;
-$json_partie["numero_tour"] = -1;
+$json_partie["numero_joueur_actuelle"] = $id_joueur;
+$json_partie["numero_tour"] = 1;
 
 //la distribution
 

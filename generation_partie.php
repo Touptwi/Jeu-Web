@@ -12,15 +12,18 @@ $json_utilisateur = json_decode($jsonString, true);
 // ICI ON MODIFIE LE CONTENU COMME UN TABLEAU ASSOCIATIF
 $i = 0;
 $numero_partie = random_int(0,999); //on donne un indice aleatoire à la partie
-$liste_id_partie = array_keys($json_utilisateur); //on récupère les indices des parties déjà créées
-while($i < count($liste_id_partie)) //on s'assure que l'indice est unique
+if(count($json_utilisateur) > 0)
 {
-    if($numero_partie == $liste_id_partie[$i])
+    $liste_id_partie = array_keys($json_utilisateur); //on récupère les indices des parties déjà créées
+    while($i < count($liste_id_partie)) //on s'assure que l'indice est unique
     {
-        $numero_partie = random_int(0,999);
-        $i = -1;
+        if($numero_partie == $liste_id_partie[$i])
+        {
+            $numero_partie = random_int(0,999);
+            $i = -1;
+        }
+        $i++;
     }
-    $i++;
 }
 $json_utilisateur[$numero_partie] = array(); //on déclare un champs lié a la partie dans utilisateur pour permettre aux autres
                                              //joueurs de rejoindre

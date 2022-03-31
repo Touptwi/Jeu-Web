@@ -1,6 +1,6 @@
 <?php
 echo "
-<div class = 'terrain' onload = 'init_partie()'>
+<div class = 'terrain'>
 	<div class = 'main' id = 'J'>
 		moi
 	</div>
@@ -23,7 +23,7 @@ echo "
 	
 	<div id = 'pioche'>
 		pioche
-		<img src = 'nouveau dossier\carte_Autres_3.png'>
+		<img src = 'cartes_png\carte_Autres_3.png'>
 	</div>
 </div>"
 	?>
