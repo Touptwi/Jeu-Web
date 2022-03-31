@@ -1,7 +1,7 @@
 function join(){
 	let nickname = document.getElementById('nickname').value;
 	let level = document.getElementById('level').value;
-  let id_partie = document.getElementById('id_partie').value
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
       $.ajax({
         method: "GET",
         url: "inscription.php",
@@ -24,7 +24,7 @@ function join(){
 }
 
 function leave(){
-  let id_partie = document.getElementById('id_partie').value
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
   $.ajax({
     method: "GET",
     url: "desinscription.php",
@@ -56,7 +56,7 @@ function checkJoined(){
 }
 
 function refreshPlayer(){
-  let id_partie = document.getElementById('id_partie').value
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
   $.ajax({
     method: "GET",
     url: "listplayers.php",

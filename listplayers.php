@@ -7,8 +7,8 @@
 	
 echo		"<tbody>";
 		foreach($users as $i) {
-			$nom = $i -> nom;
-			$niveau = $i -> niveau;
+			$nom = $i['nom'];
+			$niveau = $i['niveau'];
 echo		"<td>$nom</td><td>$niveau</td><tr>";
 		}
 echo 	"</tbody>";
