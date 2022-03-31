@@ -63,8 +63,10 @@ function jouer_carte(carte)
     data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie,"id_carte":carte}
 
   }).done(function(e){
+    console.log("Jouer_carte log: "+e);
   }).fail(function(e){
     console.log("erreur dans jouer_carte.php");
+    console.log("Jouer_carte log: " + e);
   })
   return;
 }
