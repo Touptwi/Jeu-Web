@@ -10,7 +10,7 @@
 		
 	$file = json_decode(file_get_contents("utilisateurs.json"), true);
 
-	if(sizeof($file) == 0) {
+	if(sizeof($file)[$id_partie] == 0) {
 		$id_player += 1000;
 	}
 

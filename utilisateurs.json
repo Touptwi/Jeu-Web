@@ -1,7 +1,16 @@
 {
-    "10": [],
-    "819": [],
-    "290": [],
-    "907": [],
-    "88": []
+    "1": {
+        "1": {
+            "nom": "Jack",
+            "niveau": "D\u00e9butant"
+        },
+        "999": {
+            "nom": "Pierre",
+            "niveau": "Expert"
+        },
+        "588": {
+            "nom": "coucou",
+            "niveau": "D\u00e9butant"
+        }
+    }
 }
