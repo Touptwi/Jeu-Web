@@ -4,13 +4,11 @@
 	$niveau = $_GET['niveau'];
 	$id_partie = $_GET['numero_partie'];
 
-	echo $id_partie;
-
 	$id_player = random_int(1,999);
 		
 	$file = json_decode(file_get_contents("utilisateurs.json"), true);
 
-	if(sizeof($file)[$id_partie] == 0) {
+	if($file[$id_partie] == []) {
 		$id_player += 1000;
 	}
 
