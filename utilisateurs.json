@@ -8,5 +8,15 @@
             "nom": "d",
             "niveau": "D\u00e9butant"
         }
+    },
+    "975": {
+        "1776": {
+            "nom": "Test1",
+            "niveau": "D\u00e9butant"
+        },
+        "100": {
+            "nom": "Test2",
+            "niveau": "D\u00e9butant"
+        }
     }
 }
