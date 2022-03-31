@@ -13,7 +13,6 @@ for($i = 0; $i < count($paquet_liste); $i++)
         if($paquet_liste[i][j] == null)
         {
             include("fin_partie.php");
-            $paquet_liste = null;
         }
     }
 
