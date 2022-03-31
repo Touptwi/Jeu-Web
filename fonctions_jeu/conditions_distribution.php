@@ -2,7 +2,7 @@
 /**
  * Est appelé par init_partie
  * C'est ici qu'on verifie des règles sur la distribution
- * Parametres:
+ * Objets Accessibles:
  *   $paquet_liste : la liste des paquets créer par la distribution
  */
 

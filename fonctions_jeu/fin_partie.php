@@ -8,7 +8,7 @@
  */
         $chemin = "../partie_".$numero_partie.".json";
         echo $chemin;
-
+        
         if (isset($json_regle["eval_fin_partie"]) && $json_regle["eval_fin_partie"] != "")
             include($json_regle["eval_fin_partie"]);
         if(file_exists($chemin))
