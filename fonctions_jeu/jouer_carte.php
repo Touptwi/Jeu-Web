@@ -1,4 +1,11 @@
 <?php
+/**
+ * déplace une carte de la main du joueur vers la zone de jeu
+ * Parametres Attendu:
+ * numero_partie: l'indice de la partie
+ * id_joueur: l'indice du joueur
+ * id_carte: l'indice de la case de la carte a placé dans le tableau main du joueur
+ */
 
 $regle = json_decode(file_get_contents("regles.json"),true);
 
@@ -22,14 +29,14 @@ $json_partie = json_decode($jsonString, true);
         $joueur = $json_partie["joueurs"][$id_joueur];
 
         $carte = $joueur["main"][$id_carte];
-        if (array_key_exists($regle["cartes"][$id_carte]["regles_speciales"]))
+        if (array_key_exists($regle["cartes"][$id_carte]["on_play"])) //si la carte possède des règles particulières a effectuer lorsque elle est joué
         {
             include($regle["cartes"][$id_carte]["regles_speciales"]);
         }
         echo $carte;
 
-        unset($json_partie["joueurs"][$id_joueur]["main"][$id_carte]);
-        $json_partie["joueurs"][$id_joueur]["main"] = array_values($json_partie["joueurs"][$id_joueur]["main"]);
+        unset($json_partie["joueurs"][$id_joueur]["main"][$id_carte]); //retire la carte de la main du joueur
+        $json_partie["joueurs"][$id_joueur]["main"] = array_values($json_partie["joueurs"][$id_joueur]["main"]); //reorganise la main
 
         /*if ($json_partie["zone_jeu"][$id_joueur] != 0)
         {
@@ -38,7 +45,7 @@ $json_partie = json_decode($jsonString, true);
 
         
         $id = 0;
-        $liste_joueurs = array_keys($json_partie["joueurs"]);
+        $liste_joueurs = array_keys($json_partie["joueurs"]); 
 
         for($i = 0; $i < count($liste_joueurs); $i++)
         {
@@ -46,9 +53,9 @@ $json_partie = json_decode($jsonString, true);
             {
                 if($json_partie["zone_jeu"][$i] != 0)
                 {
-                    array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$i]);
+                    array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$i]);//si une carte etait déjà joué, la remet dans la main du joueur avant de mettre la nouvelle
                 }
-                $json_partie["zone_jeu"][$i] = $carte;
+                $json_partie["zone_jeu"][$i] = $carte; //on place la carte dans l'emplacement ayant le même numero que l'ordre d'arrivée des joueurs
             }
         }
 

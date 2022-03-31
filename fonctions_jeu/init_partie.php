@@ -71,6 +71,6 @@ file_put_contents('../partie_'. $numero_partie.'.json', json_encode($json_partie
 
 //DEBUG
 
-//chmod('../partie_' . $numero_partie.'.json',0777); //permet la modification du fichier partie à la main
+chmod('../partie_' . $numero_partie.'.json',0777); //permet la modification du fichier partie à la main
 
 ?>

@@ -1,4 +1,12 @@
 <?php
+/**
+ * Recupère la première carte de la pioche et la place dans la main du joueur
+ * Parametres:
+ * numero_partie; l'indice de la partie
+ * id_joueur: l'indice du joueur
+ * 
+ * /!\ Il n'y a aucune limite sur cette fonctionalité. Un joueur peut donc piocher tant qu'il reste des cartes dans la pioche
+ */
 
 $regle = json_decode(file_get_contents("regles.json"),true);
 

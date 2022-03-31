@@ -1,5 +1,19 @@
 <?php
 
+  /**
+   * Parametre attendu: 
+   *  AUCUN
+   * 
+   * Système de tour:
+   * LE fichier partie contient deux champs (numero_joueur_actuelle et numero_tour) seul le joueur dont l'indice
+   * est indiqué dans le champ numero_joueur_actuelle a le droit de joueur des cartes ou de terminer un tour
+   * 
+   * lorsque fin de tour est appelé, elle incremente le numero de tour de 1 et passe au joueurs suivant dans la liste
+   * les des joueurs.
+   * 
+   * numero_tour est toujours compris entre 0 et 4, 0 indiquant un tour serveur
+   */
+
   $json_regle = json_decode(file_get_contents("regles.json"),true);
 
   $path_file = "../partie_".$_GET["numero_partie"].".json";
