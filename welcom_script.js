@@ -43,12 +43,15 @@ function leave(){
 }
 
 function checkJoined(){
-  if(getCookie("id_player")!="") {
+  setInterval(refreshPlayer,750);
+  setInterval(checkStarted,1000);
+  let id_player = getCookie("id_player");
+  if(id_player!="") {
     $("#join_b").attr('value', 'Leave');
     $("#join_b").attr('onclick', 'leave()');
     $("#nickname").attr('disabled', true);
     $("#level").attr('disabled', true);
-    if(getCookie("id_player")>1000) {
+    if(id_player>1000) {
       $("#start_b").attr('disabled', false);
     }
   }
@@ -70,6 +73,11 @@ function refreshPlayer(){
   });
 }
 
+function start_(){
+  start();
+  init_partie();
+}
+
 function start(){
   $.ajax({
     method: "GET",
@@ -79,14 +87,29 @@ function start(){
     $("body").attr('onload','');
     $("body").empty();
     $("body").append(e);
+    clearInterval(refreshPlayer);
+    clearInterval(checkStarted);
   }).fail(function(e) {
     console.log(e);
     $("#message").html("<span class='ko'> Error: network problem </span>");
   });
-  init_partie();
 }
 
-
+function checkStarted() {
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
+  let id_player = getCookie("id_player");
+  $.ajax({
+    method: "GET",
+    url: "checkStarted.php",
+    data: {"numero_partie": id_partie,
+          "id_joueur": id_player}
+  }).done(function(e) {
+    if(e=="true") {start();}
+  }).fail(function(e) {
+    console.log(e);
+    $("#message").html("<span class='ko'> Error: network problem </span>");
+  });
+}
 
 
 
