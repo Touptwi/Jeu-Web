@@ -7,7 +7,7 @@
  * id_carte: l'indice de la case de la carte a placé dans le tableau main du joueur
  */
 
-$regle = json_decode(file_get_contents("regles.json"),true);
+$json_regle = json_decode(file_get_contents("regles.json"),true);
 
 $numero_partie = $_GET["numero_partie"];
 $id_joueur = $_GET["id_joueur"];
@@ -29,9 +29,9 @@ $json_partie = json_decode($jsonString, true);
         $joueur = $json_partie["joueurs"][$id_joueur];
 
         $carte = $joueur["main"][$id_carte];
-        if (array_key_exists($regle["cartes"][$id_carte]["on_play"])) //si la carte possède des règles particulières a effectuer lorsque elle est joué
+        if (array_key_exists($json_regle["cartes"][$id_carte]["on_play"])) //si la carte possède des règles particulières a effectuer lorsque elle est joué
         {
-            include($regle["cartes"][$id_carte]["regles_speciales"]);
+            include($json_regle["cartes"][$id_carte]["regles_speciales"]);
         }
         echo $carte;
 

@@ -78,7 +78,7 @@ function piocher()
     data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie}
 
   }).done(function(e){
-    console.log("tu as pioché");
+    console.log("tu as pioché " + e );
   }).fail(function(e){
     console.log("erreur dans jouer_carte.php");
   })
@@ -97,9 +97,9 @@ function init_partie()
     data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie}
 
   }).done(function(e){
-    
+    console.log("initialisation de la partie " + id_partie + "reussie");
   }).fail(function(e){
-    console.log("erreur dans jouer_carte.php");
+    console.log("erreur dans init: " + e);
   })
   return;
 }

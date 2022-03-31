@@ -13,7 +13,7 @@
    * 
    * numero_tour est toujours compris entre 0 et 4, 0 indiquant un tour serveur
    */
-
+  
   $json_regle = json_decode(file_get_contents("regles.json"),true);
 
   $path_file = "../partie_".$_GET["numero_partie"].".json";
@@ -27,7 +27,14 @@
   $jsonString = fread($partie, filesize($path_file));
   $json_partie = json_decode($jsonString, true);//on recupère le plateau de jeu en associative array
 
-  
+  //si definit, appel le fichier indiquant les conditions pour pouvoir finir son tour
+  //si aucun fichier n'est defini dans regles.json alors le joueur peut finir son tour sans avoir joué
+  if(isset($json_regle["condition_fin_tour"]) && $json_regle["condition_fin_tour"] != "")
+  {
+    include($json_regle["condition_fin_tour"]);  
+  }
+
+
   $json_partie["numero_tour"] = ($json_partie["numero_tour"] + 1)%5;//on incrémente de 1 le tour de jeu
   if ($json_partie["numero_tour"] != 0)//si le tour de jeu n'est pas a 0 (le tour du serveur)
   {
