@@ -87,7 +87,7 @@ function piocher()
 
 function init_partie()
 {
-  console.log("initialisation partie"); 
+  console.log("initialisation partie");
   setInterval(refresh, 500);
   let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
   console.log(id_partie);
@@ -97,7 +97,7 @@ function init_partie()
     data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie}
 
   }).done(function(e){
-    console.log("initialisation de la partie " + id_partie + "reussie");
+    console.log("initialisation de la partie " + id_partie + "reussie: "+ e );
   }).fail(function(e){
     console.log("erreur dans init: " + e);
   })
