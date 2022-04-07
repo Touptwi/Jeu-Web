@@ -61,7 +61,7 @@ function refresh()
         for (let j = 0; j < e.adversaire[id_adv].nb_cartes; j++)
         {
           //console.log("affichage de la carte adverse numero " + j)
-          ad.append("<div> <img id= 'carte' src ='cartes_png/carte_Autres_3.png' ></div>");
+          ad.append("<div> <img class= 'carte' src ='cartes_png/carte_Autres_3.png' ></div>");
         }
       }
 
