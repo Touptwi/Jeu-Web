@@ -38,6 +38,7 @@ $pioche = [];
 
 foreach (array_keys($json_regles["cartes"]) as $val) //on génère les cartes d'après le fichier de règles
 {
+  if($val > 0)
   array_push($pioche, $val);
 }
 shuffle($pioche);
