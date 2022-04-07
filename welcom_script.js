@@ -104,6 +104,7 @@ function checkStarted() {
     data: {"numero_partie": id_partie,
           "id_joueur": id_player}
   }).done(function(e) {
+    console.log(e);
     if(e=="true") {start();}
   }).fail(function(e) {
     console.log(e);

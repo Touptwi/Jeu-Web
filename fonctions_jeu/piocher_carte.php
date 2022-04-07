@@ -38,6 +38,6 @@ fwrite($partie, $newJsonString);
 flock($partie, LOCK_UN);
 fclose($partie);
 
-include("fin_partie.php");
+//include("fin_partie.php");
 
 ?>
