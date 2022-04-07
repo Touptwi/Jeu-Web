@@ -42,21 +42,7 @@ foreach (array_keys($json_regles["cartes"]) as $val) //on génère les cartes d'
 }
 shuffle($pioche); 
 
-/*
-$paquet_liste = [];
-
-for ($nb_paquet = 0; $nb_paquet <  $json_regles["distribution"]["nb_paquets"] ; $nb_paquet ++)
-{
-  $paquet = [];
-  for ($i = 0; $i <  $json_regles["distribution"]["nb_cartes"] ; $i++)
-  {
-    $val = array_pop($pioche);
-    array_push($paquet,$val);
-  }
-  array_push($paquet_liste,$paquet);
-}
-*/
-$paquet_liste = distrib($json_partie,$json_regles,$pioche);
+$paquet_liste = distrib($json_partie,$json_regles,$pioche); //appel a la fonction de distribution du fichier distribution.php
 
 ////////////////////////////////////////////////////////////
 
@@ -72,6 +58,10 @@ foreach (array_keys($json_partie["joueurs"]) as $i ) { //on distribue les paquet
 
   $numero_paquet++;
 }
+
+
+$json_partie["notification"] = [];
+
 
 file_put_contents('../partie_'. $numero_partie.'.json', json_encode($json_partie,JSON_PRETTY_PRINT));
 

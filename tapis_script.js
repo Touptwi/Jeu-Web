@@ -29,24 +29,24 @@ function refresh()
       $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)") //on definit la taille du layout
       for (let i = 0; i < e.main_joueur.length; i++)
       {
-        $("#J").append("<div onclick = 'jouer_carte("+i+")'>" + e.main_joueur[i]);
+        $("#J").append("<div onclick = 'jouer_carte("+i+")'> <img id= 'carte' src ='cartes_png/" + e.main_joueur[i] + "' ></div>");
       }
       if(e.pioche != [])
       {
         $("#pioche").empty();
-        $("#pioche").append("pioche:<br>true");
+        $("#pioche").append("<img id = 'carte' src = 'cartes_png/carte_Autres_3.png'>");
         $("#pioche").attr("onclick","piocher()");
       }
       else
       {
         $("#pioche").empty();
-        $("#pioche").append("pioche:<br>false");
+        //$("#pioche").append("pioche:<br>false");
       }
 
       $("#zone-jeu").empty();
       for (let i = 0; i < e.zone_jeu.length; i++)
       {
-        $("#zone-jeu").append("<div>" + e.zone_jeu[i] + "</div>");
+        $("#zone-jeu").append("<div><img id= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' ></div>");
       }
 
     }).fail(function(e){
@@ -78,9 +78,9 @@ function piocher()
     data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie}
 
   }).done(function(e){
-    console.log("tu as pioché " + e );
+    console.log("log piocher: tu as pioché " + e );
   }).fail(function(e){
-    console.log("erreur dans jouer_carte.php");
+    console.log("log piocher: erreur dans jouer_carte.php");
   })
   return;
 }
@@ -102,4 +102,10 @@ function init_partie()
     console.log("erreur dans init: " + e);
   })
   return;
+}
+
+
+function execute_notif(fichier, data)
+{
+
 }

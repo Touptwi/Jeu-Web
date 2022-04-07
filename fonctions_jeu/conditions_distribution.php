@@ -10,7 +10,7 @@ for($i = 0; $i < count($paquet_liste); $i++)
 {
     for($j = 0; $j < count($paquet_liste[$i]); $j++)
     {
-        if($paquet_liste[i][j] == null)
+        if($paquet_liste[$i][$j] == null)
         {
             include("fin_partie.php");
         }
