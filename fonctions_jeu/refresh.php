@@ -32,7 +32,13 @@ if(isset($data["notification"]) && $data["notification"] != []) //si la partie a
 
 $result["numero_joueur_actuelle"] = $data["numero_joueur_actuelle"];
 $result["pioche"] = count($data["pioche"]);
-$result["zone_jeu"] = $data["zone_jeu"];
+$result["zone_jeu"] = [];
+
+foreach($data["zone_jeu"] as $carte)
+{
+  if($carte >= 0)
+    array_push($result["zone_jeu"],$regle_json["cartes"][$carte]["image"]);
+}
 $result["adversaire"] = array();
 foreach(array_keys($data["joueurs"]) as $i)
 {
