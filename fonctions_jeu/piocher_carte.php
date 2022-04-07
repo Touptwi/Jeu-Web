@@ -4,7 +4,7 @@
  * Parametres:
  * numero_partie; l'indice de la partie
  * id_joueur: l'indice du joueur
- * 
+ *
  * /!\ Il n'y a aucune limite sur cette fonctionalité. Un joueur peut donc piocher tant qu'il reste des cartes dans la pioche
  */
 
@@ -28,7 +28,7 @@ $json_partie = json_decode($jsonString, true);
     {
         if(count($json_partie["pioche"]) > 0)
             array_push($json_partie["joueurs"][$id_joueur]["main"],array_pop($json_partie["pioche"]));
-        
+
     }
 
 $newJsonString = json_encode($json_partie, JSON_PRETTY_PRINT);
@@ -37,7 +37,5 @@ fseek($partie,0);
 fwrite($partie, $newJsonString);
 flock($partie, LOCK_UN);
 fclose($partie);
-
-//include("fin_partie.php");
 
 ?>

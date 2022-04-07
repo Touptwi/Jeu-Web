@@ -16,10 +16,10 @@ if($id_joueur <= 1000)
 
 $json_utilisateurs_liste = json_decode(file_get_contents("../utilisateurs.json"),true);//on récupère les utilisateurs
 $json_utilisateurs = $json_utilisateurs_liste[$numero_partie];
-echo json_encode($json_utilisateurs,JSON_PRETTY_PRINT);
-if (file_exists('../partie_' . $numero_partie.'.json')) //si la partie existe déjà on écrasera le fichier existant
+//echo json_encode($json_utilisateurs,JSON_PRETTY_PRINT);
+if (file_exists('../partie_' .$numero_partie.'.json')) //si la partie existe déjà on écrasera le fichier existant
 {
-  $json_partie = json_decode(file_get_contents('../partie_' . $numero_partie.'.json'),true);
+  $json_partie = json_decode(file_get_contents('../partie_' .$numero_partie.'.json'),true);
 }else{
   $json_partie = array();
 }
@@ -40,7 +40,7 @@ foreach (array_keys($json_regles["cartes"]) as $val) //on génère les cartes d'
 {
   array_push($pioche, $val);
 }
-shuffle($pioche); 
+shuffle($pioche);
 
 /*
 $paquet_liste = [];
@@ -74,7 +74,7 @@ foreach (array_keys($json_partie["joueurs"]) as $i ) { //on distribue les paquet
 }
 
 file_put_contents('../partie_'. $numero_partie.'.json', json_encode($json_partie,JSON_PRETTY_PRINT));
-
+echo "Init log: ecriture du fichier reussi";
 //DEBUG
 
 chmod('../partie_' . $numero_partie.'.json',0777); //permet la modification du fichier partie à la main
