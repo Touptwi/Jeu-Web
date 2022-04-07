@@ -23,7 +23,6 @@ echo "
 	
 	<div id = 'pioche'>
 		pioche
-		<img src = 'cartes_png\carte_Autres_3.png'>
 	</div>
 </div>"
 	?>

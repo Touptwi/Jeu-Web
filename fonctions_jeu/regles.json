@@ -1,6 +1,11 @@
 {
   "cartes":
   {
+
+    "0":{
+      "image":"carte_Autres_3.png"
+    },
+
     "101":{
       "puissance":13,
       "image": "carte_Piques_1.png"

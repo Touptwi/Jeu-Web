@@ -40,7 +40,6 @@ function refresh()
       else
       {
         $("#pioche").empty();
-        //$("#pioche").append("pioche:<br>false");
       }
 
       $("#zone-jeu").empty();
