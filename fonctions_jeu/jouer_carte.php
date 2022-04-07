@@ -29,9 +29,9 @@ $json_partie = json_decode($jsonString, true);
         $joueur = $json_partie["joueurs"][$id_joueur];
 
         $carte = $joueur["main"][$id_carte];
-        if (array_key_exists($json_regle["cartes"][$id_carte]["on_play"])) //si la carte possède des règles particulières a effectuer lorsque elle est joué
+        if (isset($json_regle["cartes"][$id_carte]["on_play"])) //si la carte possède des règles particulières a effectuer lorsque elle est joué
         {
-            include($json_regle["cartes"][$id_carte]["regles_speciales"]);
+            include($json_regle["cartes"][$id_carte]["on_play"]);
         }
         echo $carte;
 
@@ -43,9 +43,9 @@ $json_partie = json_decode($jsonString, true);
             array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$id_joueur]);
         }*/
 
-        
+
         $id = 0;
-        $liste_joueurs = array_keys($json_partie["joueurs"]); 
+        $liste_joueurs = array_keys($json_partie["joueurs"]);
 
         for($i = 0; $i < count($liste_joueurs); $i++)
         {
