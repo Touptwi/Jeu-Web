@@ -1,3 +1,6 @@
+let id_interval_refreshPlayer;
+let id_interval_checkStarted;
+
 function join(){
 	let nickname = document.getElementById('nickname').value;
 	let level = document.getElementById('level').value;
@@ -43,8 +46,8 @@ function leave(){
 }
 
 function checkJoined(){
-  setInterval(refreshPlayer,750);
-  setInterval(checkStarted,1000);
+  id_interval_refreshPlayer=setInterval(refreshPlayer,750);
+  id_interval_checkStarted=setInterval(checkStarted,1000);
   let id_player = getCookie("id_player");
   if(id_player!="") {
     $("#join_b").attr('value', 'Leave');
@@ -74,8 +77,8 @@ function refreshPlayer(){
 }
 
 function start_(){
-  start();
   init_partie();
+  start();  
 }
 
 function start(){
@@ -87,13 +90,12 @@ function start(){
     $("body").attr('onload','');
     $("body").empty();
     $("body").append(e);
-    clearInterval(refreshPlayer);
-    clearInterval(checkStarted);
+    clearInterval(id_interval_refreshPlayer);
+    clearInterval(id_interval_checkStarted);
   }).fail(function(e) {
     console.log(e);
     $("#message").html("<span class='ko'> Error: network problem </span>");
   });
-	init_partie();
 }
 
 function checkStarted() {
