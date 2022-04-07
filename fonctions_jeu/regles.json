@@ -3,55 +3,55 @@
   {
     "101":{
       "puissance":13,
-      "image": ""
+      "image": "carte_Piques_1.png"
     },
     "102":{
       "puissance":1,
-      "image":""
+      "image":"carte_Piques_2.png"
     },
     "103":{
       "puissance":2,
-      "image":""
+      "image":"carte_Piques_3.png"
     },
     "104":{
       "puissance":3,
-      "image":""
+      "image":"carte_Piques_4.png"
     },
     "105":{
       "puissance":4,
-      "image":""
+      "image":"carte_Piques_5.png"
     },
     "106":{
       "puissance":5,
-      "image":""
+      "image":"carte_Piques_6.png"
     },
     "107":{
       "puissance":6,
-      "image":""
+      "image":"carte_Piques_7.png"
     },
     "108":{
       "puissance":7,
-      "image":""
+      "image":"carte_Piques_8.png"
     },
     "109":{
       "puissance":8,
-      "image":""
+      "image":"carte_Piques_9.png"
     },
     "110":{
       "puissance":9,
-      "image":""
+      "image":"carte_Piques_10.png"
     },
     "111":{
       "puissance":10,
-      "image":""
+      "image":"carte_Piques_11.png"
     },
     "112":{
       "puissance":12,
-      "image":""
+      "image":"carte_Piques_12.png"
     },
     "113":{
       "puissance":12,
-      "image":""
+      "image":"carte_Piques_13.png"
     },
 
 
@@ -113,110 +113,110 @@
 
     "301":{
       "puissance":13,
-      "image":""
+      "image":"carte_Trefles_1.png"
     },
     "302":{
       "puissance":1,
-      "image":""
+      "image":"carte_Trefles_2.png"
     },
     "303":{
       "puissance":2,
-      "image":""
+      "image":"carte_Trefles_3.png"
     },
     "304":{
       "puissance":3,
-      "image":""
+      "image":"carte_Trefles_4.png"
     },
     "305":{
       "puissance":4,
-      "image":""
+      "image":"carte_Trefles_5.png"
     },
     "306":{
       "puissance":5,
-      "image":""
+      "image":"carte_Trefles_6.png"
     },
     "307":{
       "puissance":6,
-      "image":""
+      "image":"carte_Trefles_7.png"
     },
     "308":{
       "puissance":7,
-      "image":""
+      "image":"carte_Trefles_8.png"
     },
     "309":{
       "puissance":8,
-      "image":""
+      "image":"carte_Trefles_9.png"
     },
     "310":{
       "puissance":9,
-      "image":""
+      "image":"carte_Trefles_10.png"
     },
     "311":{
       "puissance":10,
-      "image":""
+      "image":"carte_Trefles_11.png"
     },
     "312":{
       "puissance":12,
-      "image":""
+      "image":"carte_Trefles_12.png"
     },
     "313":{
       "puissance":12,
-      "image":""
+      "image":"carte_Trefles_13.png"
     },
 
 
 
     "401":{
       "puissance":13,
-      "image":""
+      "image":"carte_Carraux_1.png"
     },
     "402":{
       "puissance":1,
-      "image":""
+      "image":"carte_Carraux_2.png"
     },
     "403":{
       "puissance":2,
-      "image":""
+      "image":"carte_Carraux_3.png"
     },
     "404":{
       "puissance":3,
-      "image":""
+      "image":"carte_Carraux_4.png"
     },
     "405":{
       "puissance":4,
-      "image":""
+      "image":"carte_Carraux_5.png"
     },
     "406":{
       "puissance":5,
-      "image":""
+      "image":"carte_Carraux_6.png"
     },
     "407":{
       "puissance":6,
-      "image":""
+      "image":"carte_Carraux_7.png"
     },
     "408":{
       "puissance":7,
-      "image":""
+      "image":"carte_Carraux_8.png"
     },
     "409":{
       "puissance":8,
-      "image":""
+      "image":"carte_Carraux_9.png"
     },
     "410":{
       "puissance":9,
-      "image":""
+      "image":"carte_Carraux_10.png"
     },
     "411":{
       "puissance":10,
-      "image":""
+      "image":"carte_Carraux_11.png"
     },
     "412":{
       "puissance":12,
-      "image":""
+      "image":"carte_Carraux_12.png"
     },
     "413":{
       "puissance":12,
-      "image":""
+      "image":"carte_Carraux_13.png"
     }
   },
 

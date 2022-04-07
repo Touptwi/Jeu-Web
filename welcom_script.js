@@ -93,7 +93,6 @@ function start(){
     console.log(e);
     $("#message").html("<span class='ko'> Error: network problem </span>");
   });
-	init_partie();
 }
 
 function checkStarted() {
