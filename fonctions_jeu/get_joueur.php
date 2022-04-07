@@ -1,6 +1,6 @@
 <?php
 /**
- * va récupérer un numero de joueur et rendre la lliste des noms des joueurs
+ * va récupérer un numero de joueur et rendre la liste des noms des joueurs
  * paramètres attendu:
  * numero_partie: le numero de partie
  * nom joueur/numero de joueur:

@@ -46,10 +46,11 @@ foreach(array_keys($data["joueurs"]) as $i)
     }
   }else{
     $main = $data["joueurs"][$i]["main"];
+    $result["adversaire"][$i]["nom"] = $data["joueurs"][$i]["nom"];
     if($main == [])
-      $result["adversaire"][$i] = 0;
+      $result["adversaire"][$i]["nb_cartes"] = 0;
     else
-      $result["adversaire"][$i] = count($main);
+      $result["adversaire"][$i]["nb_cartes"] = count($main);
   }
 }
 echo json_encode($result);
