@@ -29,13 +29,12 @@ function refresh()
       $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)") //on definit la taille du layout
       for (let i = 0; i < e.main_joueur.length; i++)
       {
-        $("#J").append("<div onclick = 'jouer_carte("+i+")'> <img id= 'carte' src ='cartes_png/" + e.main_joueur[i] + "' ></div>");
+        $("#J").append("<div> <img class= 'carte' src ='cartes_png/" + e.main_joueur[i] + "' onclick = 'jouer_carte("+i+")'></div>");
       }
       if(e.pioche != [])
       {
         $("#pioche").empty();
-        $("#pioche").append("<img id = 'carte' src = 'cartes_png/carte_Autres_3.png'>");
-        $("#pioche").attr("onclick","piocher()");
+        $("#pioche").append("<img class= 'carte' src = 'cartes_png/carte_Autres_3.png' onclick = 'piocher()'>");
       }
       else
       {
@@ -45,7 +44,7 @@ function refresh()
       $("#zone-jeu").empty();
       for (let i = 0; i < e.zone_jeu.length; i++)
       {
-        $("#zone-jeu").append("<div><img id= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' ></div>");
+        $("#zone-jeu").append("<div><img class= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' ></div>");
       }
 
     }).fail(function(e){
