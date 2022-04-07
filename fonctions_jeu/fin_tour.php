@@ -41,7 +41,7 @@
     $ids_joueurs = array_keys($json_partie["joueurs"]);//on récupère la liste des indices des joueurs
     if ($json_partie["numero_joueur_actuelle"] == 0) //si le dernier joueur est le serveur
     {
-      $json_partie["numero_joueur_actuelle"] = $ids_joueurs[0];//on met le numero_joueur_actuelle à 0
+      $json_partie["numero_joueur_actuelle"] = $ids_joueurs[0];//on met le numero_joueur_actuelle sur le premier joueur
     }else{
       $i = 0;
       $continue = true;

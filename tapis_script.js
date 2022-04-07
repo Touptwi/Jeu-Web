@@ -57,7 +57,7 @@ function refresh()
         let id_adv = liste_adversaires[i];
         //console.log("affichage de " + id_adv);
         ad.empty(); //on vide la zone de l'adversaire
-        ad.css("grid-template-columns","repeat(" + e.adversaire[id_adv].nb_cartes +", 1fr)") //on definit la taille du layout
+        ad.css("grid-template-columns","repeat(" + e.adversaire[id_adv].nb_cartes +", 0)") //on definit la taille du layout
         for (let j = 0; j < e.adversaire[id_adv].nb_cartes; j++)
         {
           //console.log("affichage de la carte adverse numero " + j)

@@ -41,7 +41,6 @@ foreach (array_keys($json_regles["cartes"]) as $val) //on génère les cartes d'
   if($val > 0)
   array_push($pioche, $val);
 }
-shuffle($pioche);
 
 $paquet_liste = distrib($json_partie,$json_regles,$pioche); //appel a la fonction de distribution du fichier distribution.php
 
