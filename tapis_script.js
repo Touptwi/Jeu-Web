@@ -31,6 +31,7 @@ function refresh()
       {
         $("#J").append("<div onclick = 'jouer_carte("+i+")'> <img id= 'carte' src ='cartes_png/" + e.main_joueur[i] + "' ></div>");
       }
+      //affichage de la pioche
       if(e.pioche != [])
       {
         $("#pioche").empty();
@@ -41,11 +42,28 @@ function refresh()
       {
         $("#pioche").empty();
       }
-
+      //affichage de la zone de jeu
       $("#zone-jeu").empty();
       for (let i = 0; i < e.zone_jeu.length; i++)
       {
         $("#zone-jeu").append("<div><img id= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' ></div>");
+      }
+
+      //affichage adversaires
+      //console.log("refersh log: nombre adversaire " + Object.keys(e.adversaire).length);
+      let liste_adversaires = Object.keys(e.adversaire)
+      for(let i = 0 ; i < liste_adversaires.length; i++)
+      {
+        let ad = $("#Ad"+ (i+1));
+        let id_adv = liste_adversaires[i];
+        //console.log("affichage de " + id_adv);
+        ad.empty(); //on vide la zone de l'adversaire
+        ad.css("grid-template-columns","repeat(" + liste_adversaires.length +", 1fr)") //on definit la taille du layout
+        for (let j = 0; j < e.adversaire[id_adv].nb_cartes; j++)
+        {
+          //console.log("affichage de la carte adverse numero " + j)
+          ad.append("<div> <img id= 'carte' src ='cartes_png/carte_Autres_3.png' ></div>");
+        }
       }
 
     }).fail(function(e){

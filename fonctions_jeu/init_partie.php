@@ -54,7 +54,7 @@ $numero_paquet = 0;
 foreach (array_keys($json_partie["joueurs"]) as $i ) { //on distribue les paquets créer lors de la distribution aux joueurs
   $json_partie["joueurs"][$i]["main"] = $paquet_liste[$numero_paquet];
   $json_partie["joueurs"][$i]["plis"] = [];
-  array_push($json_partie['zone_jeu'],0); //on génère une zone de jeu pour chaque joueur
+  array_push($json_partie['zone_jeu'],-1); //on génère une zone de jeu pour chaque joueur
 
   $numero_paquet++;
 }

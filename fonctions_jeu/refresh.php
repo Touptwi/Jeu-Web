@@ -39,6 +39,7 @@ foreach($data["zone_jeu"] as $carte)
   if($carte >= 0)
     array_push($result["zone_jeu"],$regle_json["cartes"][$carte]["image"]);
 }
+
 $result["adversaire"] = array();
 foreach(array_keys($data["joueurs"]) as $i)
 {

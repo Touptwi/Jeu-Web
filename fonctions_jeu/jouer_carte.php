@@ -51,7 +51,7 @@ $json_partie = json_decode($jsonString, true);
         {
             if ($liste_joueurs[$i] == $id_joueur)
             {
-                if($json_partie["zone_jeu"][$i] != 0)
+                if($json_partie["zone_jeu"][$i] > 0)
                 {
                     array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$i]);//si une carte etait déjà joué, la remet dans la main du joueur avant de mettre la nouvelle
                 }
