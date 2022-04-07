@@ -31,7 +31,6 @@ td {
 
 img{
 	object-fit:scale-down;
-
 }
 
 .pioche{
@@ -82,7 +81,10 @@ img{
 }
 
 #pioche{
-
 	grid-row: 3;
 	grid-column: 4;
+}
+
+.carte{
+	max-height: 20vh;
 }

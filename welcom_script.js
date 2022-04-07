@@ -90,6 +90,7 @@ function start(){
     $("body").attr('onload','');
     $("body").empty();
     $("body").append(e);
+    setInterval(refresh, 500);
     clearInterval(id_interval_refreshPlayer);
     clearInterval(id_interval_checkStarted);
   }).fail(function(e) {
@@ -108,7 +109,7 @@ function checkStarted() {
           "id_joueur": id_player}
   }).done(function(e) {
     console.log(e);
-    if(e=="true") {start_();}
+    if(e=="true") {start();}
   }).fail(function(e) {
     console.log(e);
     $("#message").html("<span class='ko'> Error: network problem </span>");
