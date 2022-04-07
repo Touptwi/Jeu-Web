@@ -12,7 +12,7 @@
      *                  1 melange systematique avant distribution
      *                  -1 ne melange le paquet que lors de la première distribution
      */
-    function distrib($json_partie, $json_regles, $pioche)
+    function distrib($json_partie, $json_regles, &$pioche)
     {
         if(!isset($json_regles["distribution"]["melange"]) || $json_regles["distribution"]["melange"] != 0)
             {
@@ -26,8 +26,11 @@
         $paquet = [];
         for ($i = 0; $i <  $json_regles["distribution"]["nb_cartes"] ; $i++)
         {
+
             $val = array_pop($pioche);
+            //$pioche = array_values($pioche);
             array_push($paquet,$val);
+            
         }
         array_push($paquet_liste,$paquet);
         }
