@@ -90,6 +90,7 @@ function start(){
     $("body").attr('onload','');
     $("body").empty();
     $("body").append(e);
+    setInterval(refresh, 500);
     clearInterval(id_interval_refreshPlayer);
     clearInterval(id_interval_checkStarted);
   }).fail(function(e) {
