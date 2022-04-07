@@ -29,7 +29,7 @@ function refresh()
       $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)") //on definit la taille du layout
       for (let i = 0; i < e.main_joueur.length; i++)
       {
-        $("#J").append("<div> <img class= 'carte' src ='cartes_png/" + e.main_joueur[i] + "' onclick = 'jouer_carte("+i+")'></div>");
+        $("#J").append("<img class= 'carte' src ='cartes_png/" + e.main_joueur[i] + "' onclick = 'jouer_carte("+i+")'>");
       }
       //affichage de la pioche
       if(e.pioche != [])
@@ -45,7 +45,7 @@ function refresh()
       $("#zone-jeu").empty();
       for (let i = 0; i < e.zone_jeu.length; i++)
       {
-        $("#zone-jeu").append("<div><img class= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' ></div>");
+        $("#zone-jeu").append("<img class= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' >");
       }
 
       //affichage adversaires
@@ -61,7 +61,7 @@ function refresh()
         for (let j = 0; j < e.adversaire[id_adv].nb_cartes; j++)
         {
           //console.log("affichage de la carte adverse numero " + j)
-          ad.append("<div> <img class= 'carte' src ='cartes_png/carte_Autres_3.png' ></div>");
+          ad.append("<img class= 'carte' src ='cartes_png/carte_Autres_3.png' >");
         }
       }
 
