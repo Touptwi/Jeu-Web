@@ -24,5 +24,12 @@ echo "
 	<div id = 'pioche'>
 		pioche
 	</div>
+
+	<div id = 'tchat'>
+		<div id = 'tchat_content'></div>
+		<input id='tchat_input' type='text'>
+		<input id='tchat_send' type='Button' value='SEND' onclick='sendTchat()'>
+	</div>
+
 </div>"
 	?>

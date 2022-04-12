@@ -126,3 +126,19 @@ img{
 	grid-row: 3;
 	grid-column: 4;
 }
+
+#tchat{
+	grid-row: 5/5;
+	grid-column: 1/1;
+	display: inline;
+}
+
+#tchat_content{
+	height: 90%;
+	width: 100%;
+	background-color: white;
+}
+
+#tchat_input{
+	width: 80%;
+}

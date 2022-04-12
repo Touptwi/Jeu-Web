@@ -60,5 +60,8 @@ foreach(array_keys($data["joueurs"]) as $i)
       $result["adversaire"][$i]["nb_cartes"] = count($main);
   }
 }
+
+$result["tchat"] = $data["tchat"];
+
 echo json_encode($result);
  ?>

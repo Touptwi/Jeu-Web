@@ -82,6 +82,15 @@ function refresh()
         }
       }
 
+      //affichage tchat
+      if(e.tchat != []) {
+        $("#tchat_content").empty();
+        for(let i = 0; i < e.tchat.length; i++)
+        $("#tchat_content").append('<br>'+e.tchat[i]+'</br>');
+      } else {
+        $("#tchat_content").empty();
+      }
+
     }).fail(function(e){
       console.log("on a un problème dans refresh" + e);
     })
@@ -139,8 +148,20 @@ function init_partie()
   return;
 }
 
-
-function execute_notif(fichier, data)
-{
-
+function sendTchat(){
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
+  let id_player = get_cookie_value("id_player");
+  let message = document.getElementById('tchat_input').value;
+  $.ajax({
+    method: "GET",
+    url: "addTchat.php",
+    data: { "message": message,
+            "id_joueur": id_player,
+            "numero_partie": id_partie}
+  }).done(function(e) {
+    refresh();
+  }).fail(function(e) {
+    console.log(e);
+    $("#message").html("<span class='ko'> Error: network problem </span>");
+  });
 }
