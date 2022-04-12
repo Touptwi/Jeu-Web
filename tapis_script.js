@@ -16,6 +16,8 @@ function get_cookie_value(cname)
   return "";
 }
 
+var nombre_carte_prec = 0; //une variable globale qui indique le nombre de carte présente dans la main du joueur au tour précedent
+
 function refresh()
 {
   let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
@@ -25,11 +27,24 @@ function refresh()
         url:"fonctions_jeu/refresh.php",
         data: {"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie}
     }).done(function(e) {
-      $("#J").empty(); //on vide la zone du joueur
-      $("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)") //on definit la taille du layout
-      for (let i = 0; i < e.main_joueur.length; i++)
+      //$("#J").empty(); //on vide la zone du joueur
+      //$("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)") //on definit la taille du layout
+      console.log("refresh log: nombre de carte précédente = " + nombre_carte_prec); 
+      console.log("refresh log: nb max = " + Math.max(e.main_joueur.length,nombre_carte_prec) );
+      for (let i = 0; i < Math.max(e.main_joueur.length,nombre_carte_prec); i++)
       {
-        $("#J").append("<img class= 'carte' src ='cartes_png/" + e.main_joueur[i] + "' onclick = 'jouer_carte("+i+")'>");
+        if(i < e.main_joueur.length) //pour toutes les cartes présente dans la main du joueur
+        {  
+          if($("#J #" + i).length === 0) //si aucune image n'est présente
+          {
+            $("#J").append("<img class= 'carte' id = '" + i +"' src ='cartes_png/" + e.main_joueur[i] + "' onclick = 'jouer_carte("+i+")'>"); //on les crée
+          }else{
+            $("#J #"+i).attr('src',"cartes_png/" + e.main_joueur[i]); //sinon on met l'image à jour
+          }
+        }else{ //si on a des images en trop, on les supprime
+          $("#J #"+i).remove();
+        }
+        nombre_carte_prec = e.main_joueur.length;
       }
       //affichage de la pioche
       if(e.pioche != [])
