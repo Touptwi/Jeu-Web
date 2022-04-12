@@ -51,27 +51,70 @@ img{
 	grid-auto-rows: 100%;
 }
 
+.carte{
+	max-height: 20vh;
+	max-width: 10vw;
+  	position: relative;
+}
+
+.carteInjouable {
+	opacity: 0.5;
+}
 
 #J{
 	grid-row: 5/5;
 	grid-column: 2/5;
-	display: flex;
+	display: inline;
 	gap: 10px;
+}
+
+#J .carte:not(:first-child){
+	margin-left: -10vh;
+}
+
+#J .carte:hover {
+	transform: translateY(-50%);
+	transition: 0.4s ease-in-out;
 }
 
 #Ad1{
 	grid-row: 2/5 ;
 	grid-column: 1/1;
+	display: inline;
+}
+
+#Ad1 img{
+	rotate: 90deg;
+	margin-left: 25%;
+}
+
+#Ad1 .carte:not(:first-child){
+	margin-top: -50vh;
 }
 
 #Ad2{
 	grid-row: 1/1 ;
 	grid-column: 2/5;
+	display: inline;
+}
+
+#Ad2 .carte:not(:first-child){
+	margin-left: -10vh;
 }
 
 #Ad3{
 	grid-row: 2/5;
 	grid-column: 5/5 ;
+	display: inline;
+}
+
+#Ad3 img{
+	rotate: 90deg;
+	margin-left: 25%;
+}
+
+#Ad3 .carte:not(:first-child){
+	margin-top: -50vh;
 }
 
 #zone-jeu{
@@ -82,20 +125,4 @@ img{
 #pioche{
 	grid-row: 3;
 	grid-column: 4;
-}
-
-.carte{
-	max-height: 20vh;
-	max-width: 10vw;
-  	position: relative;
-}
-
-#J .carte:not(:first-child){
-	margin-left: -5vw;
-}
-
-#J .carte:hover {
-	transform: translateY(0vh);
-	margin-right: 4vw;
-	transition: 0.4s ease-in-out;
 }
