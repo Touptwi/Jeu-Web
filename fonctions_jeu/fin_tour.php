@@ -56,8 +56,7 @@
       }
 
     }
-  }else{//si c'est le tour du serveur, le joueur est mis à 0
-    $json_partie["numero_joueur_actuelle"] = 0;
+  }else{//si c'est le tour du serveur
     include($json_regle["eval_zone_jeu"]); //on execute l'evaluation du terrain de jeu
 
     for($i = 0; $i < count($json_partie["zone_jeu"]); $i++) //on remet la zone de jeu à zero
