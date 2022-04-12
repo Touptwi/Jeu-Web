@@ -132,6 +132,7 @@ function init_partie()
     data:{"id_joueur":get_cookie_value("id_player"),"numero_partie":id_partie}
 
   }).done(function(e){
+    $("#J").append("<div onclick = 'fin_tour()'>fin de tour</div>");
     console.log("initialisation de la partie " + id_partie + "reussie: "+ e );
   }).fail(function(e){
     console.log("erreur dans init: " + e);
@@ -139,6 +140,19 @@ function init_partie()
   return;
 }
 
+function fin_tour()
+{
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
+  $.ajax({
+    method:"GET",
+    url:"fonctions_jeu/fin_tour.php",
+    data:{"numero_partie":id_partie}
+  }).done(function(e){
+    console.log("fin_tour log: fin de tour réussi");
+  }).fail(function(e){
+    console.log("fin_tour log: erreur lors de la fin du tour de la partie"+ id_partie + " avec comme rendu " + e);
+  })
+}
 
 function execute_notif(fichier, data)
 {
