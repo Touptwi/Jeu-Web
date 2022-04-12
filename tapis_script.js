@@ -29,10 +29,11 @@ function refresh()
     }).done(function(e) {
       //$("#J").empty(); //on vide la zone du joueur
       //$("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)") //on definit la taille du layout
-      console.log("refresh log: nombre de carte précédente = " + nombre_carte_prec); 
-      console.log("refresh log: nb max = " + Math.max(e.main_joueur.length,nombre_carte_prec) );
+      //console.log("refresh log: nombre de carte précédente = " + nombre_carte_prec); 
+      //console.log("refresh log: nb max = " + Math.max(e.main_joueur.length,nombre_carte_prec) );
       for (let i = 0; i < Math.max(e.main_joueur.length,nombre_carte_prec); i++)
       {
+        //console.log("refresh log: numero_div = " + i);
         if(i < e.main_joueur.length) //pour toutes les cartes présente dans la main du joueur
         {  
           if($("#J #" + i).length === 0) //si aucune image n'est présente
@@ -42,10 +43,11 @@ function refresh()
             $("#J #"+i).attr('src',"cartes_png/" + e.main_joueur[i]); //sinon on met l'image à jour
           }
         }else{ //si on a des images en trop, on les supprime
+          //console.log("suppression d'une div inutile");
           $("#J #"+i).remove();
         }
-        nombre_carte_prec = e.main_joueur.length;
       }
+      nombre_carte_prec = e.main_joueur.length;
       //affichage de la pioche
       if(e.pioche != [])
       {
