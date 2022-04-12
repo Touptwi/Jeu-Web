@@ -14,6 +14,7 @@ $result = array();
 
 /*Système de notification: */
 /*
+  INUTILE POUR L'INSTANT
   Lorsque un element du jeu lance une notification au joueur, celui ci l'indique dans un champs spécial du json. Il indique alors
   - la liste des joueurs concernés
   - le fichier de code a executé pour ces joueurs
@@ -31,6 +32,7 @@ if(isset($data["notification"]) && $data["notification"] != []) //si la partie a
 }
 
 $result["numero_joueur_actuelle"] = $data["numero_joueur_actuelle"];
+$result["nom_joueur"] = $data["joueurs"][$id_joueur]["nom"];
 $result["pioche"] = count($data["pioche"]);
 $result["zone_jeu"] = [];
 

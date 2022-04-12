@@ -2,10 +2,10 @@
 
   /**
    * Parametre attendu: 
-   *  AUCUN
+   *  numero_partie: le numero de la json_partie
    * 
    * Système de tour:
-   * LE fichier partie contient deux champs (numero_joueur_actuelle et numero_tour) seul le joueur dont l'indice
+   * LE fichier json_partie contient deux champs (numero_joueur_actuelle et numero_tour) seul le joueur dont l'indice
    * est indiqué dans le champ numero_joueur_actuelle a le droit de joueur des cartes ou de terminer un tour
    * 
    * lorsque fin de tour est appelé, elle incremente le numero de tour de 1 et passe au joueurs suivant dans la liste
@@ -18,13 +18,13 @@
 
   $path_file = "../partie_".$_GET["numero_partie"].".json";
 
-  $partie = fopen($path_file,"r+");
+  $json_partie = fopen($path_file,"r+");
 
   
 
-  if (!flock($partie, LOCK_EX)) //on verouille le fichier
+  if (!flock($json_partie, LOCK_EX)) //on verouille le fichier
      http_response_code(409); // conflict
-  $jsonString = fread($partie, filesize($path_file));
+  $jsonString = fread($json_partie, filesize($path_file));
   $json_partie = json_decode($jsonString, true);//on recupère le plateau de jeu en associative array
 
   //si definit, appel le fichier indiquant les conditions pour pouvoir finir son tour
@@ -59,13 +59,20 @@
   }else{//si c'est le tour du serveur, le joueur est mis à 0
     $json_partie["numero_joueur_actuelle"] = 0;
     include($json_regle["eval_zone_jeu"]); //on execute l'evaluation du terrain de jeu
+
+    for($i = 0; $i < count($json_partie["zone_jeu"]); $i++) //on remet la zone de jeu à zero
+    {
+      $json_partie["zone_jeu"][$i] = -1;
+    }
+    
+    $jons_partie ["numero_tour"] += 1;
   }
 
   $newJsonString = json_encode($json_partie, JSON_PRETTY_PRINT);//on encode
-  ftruncate($partie, 0);
-  fseek($partie,0);
-  fwrite($partie, $newJsonString);//sauvegarde les changements
-  flock($partie, LOCK_UN);//libère le fichier
-  fclose($partie);//et on le ferme
+  ftruncate($json_partie, 0);
+  fseek($json_partie,0);
+  fwrite($json_partie, $newJsonString);//sauvegarde les changements
+  flock($json_partie, LOCK_UN);//libère le fichier
+  fclose($json_partie);//et on le ferme
 
  ?>

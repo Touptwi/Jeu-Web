@@ -24,7 +24,7 @@ $json_partie = json_decode($jsonString, true);
 
 // ICI ON MODIFIE LE CONTENU COMME UN TABLEAU ASSOCIATIF
 
-    if($json_partie["numero_joueur_actuelle"] == $id_joueur || true) //si c'est au tour du joueur
+    if($json_partie["numero_joueur_actuelle"] == $id_joueur) //si c'est au tour du joueur
     {
         $joueur = $json_partie["joueurs"][$id_joueur];
 
