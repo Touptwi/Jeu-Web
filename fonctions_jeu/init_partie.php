@@ -62,6 +62,8 @@ foreach (array_keys($json_partie["joueurs"]) as $i ) { //on distribue les paquet
 
 $json_partie["notification"] = [];
 
+$json_partie["tchat"] = [];
+
 
 file_put_contents('../partie_'. $numero_partie.'.json', json_encode($json_partie,JSON_PRETTY_PRINT));
 echo "Init log: ecriture du fichier reussi";
