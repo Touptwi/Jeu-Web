@@ -62,7 +62,8 @@ function refresh()
       $("#zone-jeu").empty();
       for (let i = 0; i < e.zone_jeu.length; i++)
       {
-        $("#zone-jeu").append("<img class= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' >");
+        $("#zone-jeu").append("<img class= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' onclick = reprendre() >");
+    
       }
 
       //affichage adversaires
@@ -92,7 +93,8 @@ function refresh()
       }
 
     }).fail(function(e){
-      console.log("on a un problème dans refresh" + e);
+      console.log("on a un problème dans refresh");
+      console.log(e);
     })
 }
 
@@ -175,10 +177,28 @@ function fin_tour()
     method:"GET",
     url:"fonctions_jeu/fin_tour.php",
     data:{"numero_partie":id_partie,
-           "id_player":id_player}
+           "id_joueur":id_player}
   }).done(function(e){
     console.log("fin_tour log: fin de tour réussi");
   }).fail(function(e){
-    console.log("fin_tour log: erreur lors de la fin du tour de la partie"+ id_partie + " avec comme rendu " + e);
+    console.log("fin_tour log: erreur lors de la fin du tour de la partie"+ id_partie + " avec comme rendu " );
+    console.log(e);
+  })
+}
+
+function reprendre()
+{
+  let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
+  let id_player = get_cookie_value("id_player");
+  $.ajax({
+    method: "GET",
+    url:"fonctions_jeu/reprendre_carte.php",
+    data:{"numero_partie":id_partie,
+           "id_joueur":id_player}
+  }).done(function(e){
+    console.log("carte reprise");
+  }).fail(function(e){
+    console.log("reprendre log: ");
+    console.log(e);
   })
 }

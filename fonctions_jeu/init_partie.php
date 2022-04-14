@@ -27,8 +27,8 @@ if (file_exists('../partie_' .$numero_partie.'.json')) //si la partie existe dé
 
 $json_regles = json_decode(file_get_contents("regles.json"),true);
 
-if(isset($json_regles["init_special.php"]) && $json_regles["init_special.php"] != "")
-  include($json_regles["init_special.php"]);
+if(isset($json_regles["init_special"]) && $json_regles["init_special"] != "")
+  include($json_regles["init_special"]);
 
 $json_partie["joueurs"] = $json_utilisateurs; //on récupère la liste des utilisateurs
 

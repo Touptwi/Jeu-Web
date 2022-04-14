@@ -21,12 +21,12 @@
 
   $path_file = "../partie_".$_GET["numero_partie"].".json";
 
-  $json_partie = fopen($path_file,"r+");
+  $json_file = fopen($path_file,"r+");
 
 
-  if (!flock($json_partie, LOCK_EX)) //on verouille le fichier
+  if (!flock($json_file, LOCK_EX)) //on verouille le fichier
      http_response_code(409); // conflict
-  $jsonString = fread($json_partie, filesize($path_file));
+  $jsonString = fread($json_file, filesize($path_file));
   $json_partie = json_decode($jsonString, true);//on recupère le plateau de jeu en associative array
   
   if($_GET["id_joueur"] == $json_partie["numero_joueur_actuel"])
@@ -73,10 +73,10 @@
   }
 
   $newJsonString = json_encode($json_partie, JSON_PRETTY_PRINT);//on encode
-  ftruncate($json_partie, 0);//on vide
-  fseek($json_partie,0);//on se place au début
-  fwrite($json_partie, $newJsonString);//sauvegarde les changements
-  flock($json_partie, LOCK_UN);//libère le fichier
-  fclose($json_partie);//et on le ferme
+  ftruncate($json_file, 0);//on vide
+  fseek($json_file,0);//on se place au début
+  fwrite($json_file, $newJsonString);//sauvegarde les changements
+  flock($json_file, LOCK_UN);//libère le fichier
+  fclose($json_file);//et on le ferme
 
  ?>
