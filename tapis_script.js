@@ -93,7 +93,8 @@ function refresh()
       }
 
     }).fail(function(e){
-      console.log("on a un problème dans refresh" + e);
+      console.log("on a un problème dans refresh");
+      console.log(e);
     })
 }
 
