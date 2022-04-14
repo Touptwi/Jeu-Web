@@ -17,6 +17,7 @@ if($id_joueur <= 1000)
 $json_utilisateurs_liste = json_decode(file_get_contents("../utilisateurs.json"),true);//on récupère les utilisateurs
 $json_utilisateurs = $json_utilisateurs_liste[$numero_partie];
 //echo json_encode($json_utilisateurs,JSON_PRETTY_PRINT);
+
 if (file_exists('../partie_' .$numero_partie.'.json')) //si la partie existe déjà on écrasera le fichier existant
 {
   $json_partie = json_decode(file_get_contents('../partie_' .$numero_partie.'.json'),true);
@@ -26,9 +27,12 @@ if (file_exists('../partie_' .$numero_partie.'.json')) //si la partie existe dé
 
 $json_regles = json_decode(file_get_contents("regles.json"),true);
 
+if(isset($json_regles["init_special.php"]) && $json_regles["init_special.php"] != "")
+  include($json_regles["init_special.php"]);
+
 $json_partie["joueurs"] = $json_utilisateurs; //on récupère la liste des utilisateurs
 
-$json_partie["numero_joueur_actuelle"] = $id_joueur;
+$json_partie["numero_joueur_actuel"] = $id_joueur;
 $json_partie["numero_tour"] = 1;
 
 //la distribution

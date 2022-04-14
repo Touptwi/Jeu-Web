@@ -11,7 +11,7 @@
       "image": "carte_Piques_1.png"
     },
     "102":{
-      "puissance":14,
+      "puissance":1,
       "image":"carte_Piques_2.png"
     },
     "103":{
@@ -66,7 +66,7 @@
       "image":"carte_Coeurs_1.png"
     },
     "202":{
-      "puissance":14,
+      "puissance":1,
       "image":"carte_Coeurs_2.png"
     },
     "203":{
@@ -121,7 +121,7 @@
       "image":"carte_Trefles_1.png"
     },
     "302":{
-      "puissance":14,
+      "puissance":1,
       "image":"carte_Trefles_2.png"
     },
     "303":{
@@ -176,7 +176,7 @@
       "image":"carte_Carraux_1.png"
     },
     "402":{
-      "puissance":14,
+      "puissance":1,
       "image":"carte_Carraux_2.png"
     },
     "403":{
@@ -229,16 +229,14 @@
   {
     "nb_paquets":4,
     "nb_cartes":3,
-    "melange" :1
+    "melange" :-1
   },
 
-  "eval_zone_jeu":"relges_president/eval_zone_jeu_president.php",
+  "eval_zone_jeu":"eval_zone_jeu.php",
 
   "tour_special":"",
 
-  "condition_fin_tour": "regles_president/condition_fin_tour_president.php",
+  "condition_fin_tour": "condition_fin_tour.php",
 
-  "eval_fin_partie": "regles_president/eval_fin_partie_president.php",
-
-  "init_special": "regles_president/init_president.php"
+  "eval_fin_partie": "" 
 }
