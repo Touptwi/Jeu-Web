@@ -170,10 +170,12 @@ function sendTchat(){
 function fin_tour()
 {
   let id_partie = document.URL.substring(document.URL.lastIndexOf('=')+1);
+  let id_player = get_cookie_value("id_player");
   $.ajax({
     method:"GET",
     url:"fonctions_jeu/fin_tour.php",
-    data:{"numero_partie":id_partie}
+    data:{"numero_partie":id_partie,
+           "id_player":id_player}
   }).done(function(e){
     console.log("fin_tour log: fin de tour réussi");
   }).fail(function(e){

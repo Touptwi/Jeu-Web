@@ -25,9 +25,9 @@ $liste_id_joueurs = array_keys($json_partie["joueurs"]);
 for($i = 0; $i < count($json_partie["zone_jeu"]); $i++) //on cherche parmi les cartes si il y en a 4 identiques
 {
     $carte = $json_partie["zone_jeu"][$i];
-    if($liste_id_joueurs[$i] == $json_partie["numero_joueur_actuelle"])
+    if($liste_id_joueurs[$i] == $json_partie["numero_joueur_actuel"])
     {
-        $json_partie["numero_joueur_actuelle"] = $liste_id_joueurs[($i + 1)%4]; //on donne la main au joueur suivant
+        $json_partie["numero_joueur_actuel"] = $liste_id_joueurs[($i + 1)%4]; //on donne la main au joueur suivant
     }
     if($carte > 0)//on récupère les cartes et on les mets dans la pioche
     {
