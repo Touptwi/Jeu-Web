@@ -13,9 +13,12 @@
 	$message_img = explode(" ", strip_tags($message));
 
 	foreach($message_img as $i) {
-        if($i[0] == "\u00a7") {
-			$carte = $regle_json[substr($i, 1)]["image"];
-            $i = "<img src ='cartes_png/".$carte."'>";
+        if($i[0] == "#") {
+			$carte = $regle_json["cartes"][substr($i, 1)]["image"];
+			if(isset($carte)) {
+				$toInsert = [array_search($i, $message_img) => "<img src ='cartes_png/".$carte."'>"];
+            	$message_img = array_replace($message_img, $toInsert);
+			}
         }
     }
 

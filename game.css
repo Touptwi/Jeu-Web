@@ -138,6 +138,10 @@ img{
 	overflow: auto;
 }
 
+#tchat_content img{
+	width: 10%;
+}
+
 #tchat_input{
 	width: 80%;
 }
