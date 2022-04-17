@@ -26,13 +26,13 @@
 
   $path_file = "../partie_".$_GET["numero_partie"].".json";
 
-  $json_partie = fopen($path_file,"r+");
+  $json_file = fopen($path_file,"r+");
 
 
 
-  if (!flock($json_partie, LOCK_EX)) //on verouille le fichier
+  if (!flock($json_file, LOCK_EX)) //on verouille le fichier
      http_response_code(409); // conflict
-  $jsonString = fread($json_partie, filesize($path_file));
+  $jsonString = fread($json_file, filesize($path_file));
   $json_partie = json_decode($jsonString, true);//on recupère le plateau de jeu en associative array
 
   //lors d'un tour classique (serveur ou joueur)
@@ -50,27 +50,33 @@
     $ids_joueurs = array_keys($json_partie["joueurs"]);//on récupère la liste des indices des joueurs
     if ($json_partie["numero_joueur_actuelle"] == 0) //si le dernier joueur est le serveur
     {
-      $json_partie["numero_joueur_actuelle"] = $ids_joueurs[0];//on met le numero_joueur_actuelle sur le premier joueur
-    }else{
-      $i = 0;
-      $continue = true;
-      while($continue&&$i < count($ids_joueurs))//on parcourt la liste des identifiants de joueurs
+      $ids_joueurs = array_keys($json_partie["joueurs"]);//on récupère la liste des indices des joueurs
+      if ($json_partie["numero_joueur_actuel"] == 0) //si le dernier joueur est le serveur
       {
-        if($ids_joueurs[$i] == $json_partie["numero_joueur_actuelle"])//on choisit l'identifiant suivant du joueur actuelle et on arrete la boucle
+        $json_partie["numero_joueur_actuel"] = $ids_joueurs[0];//on met le numero_joueur_actuel sur le premier joueur
+      }else{
+        $i = 0;
+        $continue = true;
+        while($continue&&$i < count($ids_joueurs))//on parcourt la liste des identifiants de joueurs
         {
-          $continue = false;
-          $json_partie["numero_joueur_actuelle"] = $ids_joueurs[($i+1)%count($ids_joueurs)];//on donne la main au joueur suivant
+          if($ids_joueurs[$i] == $json_partie["numero_joueur_actuel"])//on choisit l'identifiant suivant du joueur actuelle et on arrete la boucle
+          {
+            $continue = false;
+            $json_partie["numero_joueur_actuel"] = $ids_joueurs[($i+1)%count($ids_joueurs)];
+          }
+          $i++;
         }
-        $i++;
-      }
 
     }
   }else if ($json_partie["numero_tour"] == 0){//si c'est le tour du serveur
     include($json_regle["eval_zone_jeu"]); //on execute l'evaluation du terrain de jeu
 
-    for($i = 0; $i < count($json_partie["zone_jeu"]); $i++) //on remet la zone de jeu à zero
-    {
-      $json_partie["zone_jeu"][$i] = -1;
+      for($i = 0; $i < count($json_partie["zone_jeu"]); $i++) //on remet la zone de jeu à zero
+      {
+        $json_partie["zone_jeu"][$i] = -1;
+      }
+
+      $jons_partie ["numero_tour"] += 1;
     }
 
     $jons_partie ["numero_tour"] += 1;
@@ -83,10 +89,10 @@
   }
 
   $newJsonString = json_encode($json_partie, JSON_PRETTY_PRINT);//on encode
-  ftruncate($json_partie, 0);
-  fseek($json_partie,0);
-  fwrite($json_partie, $newJsonString);//sauvegarde les changements
-  flock($json_partie, LOCK_UN);//libère le fichier
-  fclose($json_partie);//et on le ferme
+  ftruncate($json_file, 0);//on vide
+  fseek($json_file,0);//on se place au début
+  fwrite($json_file, $newJsonString);//sauvegarde les changements
+  flock($json_file, LOCK_UN);//libère le fichier
+  fclose($json_file);//et on le ferme
 
  ?>

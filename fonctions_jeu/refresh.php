@@ -13,7 +13,7 @@ $regle_json = json_decode(file_get_contents("regles.json"),true);
 $result = array();
 
 
-$result["numero_joueur_actuelle"] = $data["numero_joueur_actuelle"];
+$result["numero_joueur_actuel"] = $data["numero_joueur_actuel"];
 $result["nom_joueur"] = $data["joueurs"][$id_joueur]["nom"];
 $result["pioche"] = count($data["pioche"]);
 $result["zone_jeu"] = [];

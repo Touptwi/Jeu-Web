@@ -14,8 +14,6 @@
         if(file_exists($chemin))
         {
             unlink($chemin);
-        }else{
-            echo "merde";
         }
         return null;
 

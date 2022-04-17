@@ -17,6 +17,12 @@
  * une fois ce classement mis à jour il n'est plus modifié jusqu'à la fin de la partie
  */
 
+
+if(count($json_partie["joueurs"][$json_partie["numero_joueur_actuel"]]["main"]) == 0)
+{
+    include("fonctions_jeu/fin_partie.php");
+}
+
 if(!isset($json_partie["carte_max"]))
 {
     $json_partie["carte_max"] = -1;
@@ -24,7 +30,7 @@ if(!isset($json_partie["carte_max"]))
 
 $id = 0;
 $liste_id_joueurs = array_keys($json_partie["joueurs"]);
-while($json_partie["numero_joueur_actuelle"] != $liste_id_joueurs[$id])
+while($json_partie["numero_joueur_actuel"] != $liste_id_joueurs[$id])
 {
     $id++;
 }
@@ -32,7 +38,7 @@ while($json_partie["numero_joueur_actuelle"] != $liste_id_joueurs[$id])
 
 if( $json_partie["zone_jeu"][$id] >= 1) //si le joueur a joué une carte 
 {
-    $carte_jouée = $json_regles["cartes"][$json_partie["zone_jeu"][$i]]["puissance"]; //on récupère la puissance de la carte jouée
+    $carte_jouée = $json_regle["cartes"][$json_partie["zone_jeu"][$id]]["puissance"]; //on récupère la puissance de la carte jouée
 
     if( $json_partie["identique"] >= 2 && $carte_jouée != $json_partie["carte_max"])//si les 2 cartes précedentes étaient identique et que le joueur n'a pas joué la même
     {
@@ -54,7 +60,7 @@ if( $json_partie["zone_jeu"][$id] >= 1) //si le joueur a joué une carte
     }
 }
 
-if($json_regles["cartes"][$json_partie["zone_jeu"][$id]][puissance] == 2) //si le joueur a joué un 2
+if($json_regle["cartes"][$json_partie["zone_jeu"][$id]]["puissance"] == 2) //si le joueur a joué un 2
 {
     $json_partie["identique"] = 0;//on remet à zéro le compte de cartes identiques
     $json_tour["numero_tour"] = 4; //on passe le tour à celui du dernier joueur

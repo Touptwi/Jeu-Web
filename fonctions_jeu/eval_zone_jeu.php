@@ -36,7 +36,7 @@ for($i = 0; $i < count($json_partie["zone_jeu"]); $i++) //on remet la zone de je
 {
     $json_partie["zone_jeu"][$i] = 0;
 }
-$json_partie["numero_joueur_actuelle"] = $gagnant; //le gagnant est le premier joueur a jouer au prochain tour
+$json_partie["numero_joueur_actuel"] = $gagnant; //le gagnant est le premier joueur a jouer au prochain tour
 $jons_partie ["numero_tour"] += 1;
 
  ?>
