@@ -27,9 +27,6 @@ if (file_exists('../partie_' .$numero_partie.'.json')) //si la partie existe dé
 
 $json_regles = json_decode(file_get_contents("regles.json"),true);
 
-if(isset($json_regles["init_special"]) && $json_regles["init_special"] != "")
-  include($json_regles["init_special"]);
-
 $json_partie["joueurs"] = $json_utilisateurs; //on récupère la liste des utilisateurs
 
 $json_partie["numero_joueur_actuel"] = $id_joueur;
@@ -52,7 +49,7 @@ $paquet_liste = distrib($json_partie,$json_regles,$pioche); //appel a la fonctio
 
 $json_partie['pioche'] = $pioche;
 
-$json_partie["visibilite_zone_jeu"] = true
+$json_partie["visibilite_zone_jeu"] = true;
 $json_partie['zone_jeu'] = [];
 $numero_paquet = 0;
 
@@ -68,6 +65,10 @@ foreach (array_keys($json_partie["joueurs"]) as $i ) { //on distribue les paquet
 $json_partie["notification"] = [];
 
 $json_partie["tchat"] = [];
+
+//une fois les éléments d'une partie classique initialisé, on
+if(isset($json_regles["init_special"]) && $json_regles["init_special"] != "")
+  include($json_regles["init_special"]);
 
 
 file_put_contents('../partie_'. $numero_partie.'.json', json_encode($json_partie,JSON_PRETTY_PRINT));

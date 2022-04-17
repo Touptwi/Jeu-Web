@@ -37,55 +37,44 @@
 
   //lors d'un tour classique (serveur ou joueur)
   //si definit, appel le fichier indiquant les conditions pour pouvoir finir son tour
-  //si aucun fichier n'est defini dans regles.json alors le joueur peut finir son tour sans avoir joué
+  //si aucun fichier n'est defini dans regles.json alors le joueur peut finir son tour dans tout les cas
   if($json_partie["numero_tour"] >= 0 && isset($json_regle["condition_fin_tour"]) && $json_regle["condition_fin_tour"] != "")
   {
     include($json_regle["condition_fin_tour"]);
   }
 
 
-  $json_partie["numero_tour"] = ($json_partie["numero_tour"] + 1)%5;//on incrémente de 1 le tour de jeu
-  if ($json_partie["numero_tour"] > 0)//si le tour de jeu n'est pas a 0 (le tour du serveur) ni un tour special (< 0)
+
+  if ($json_partie["numero_tour"] >= 0)//si le tour de jeu n'est pas un tour special (< 0)
   {
-    $ids_joueurs = array_keys($json_partie["joueurs"]);//on récupère la liste des indices des joueurs
-    if ($json_partie["numero_joueur_actuelle"] == 0) //si le dernier joueur est le serveur
+    $json_partie["numero_tour"] = ($json_partie["numero_tour"] + 1)%5;//on incrémente de 1 le tour de jeu
+    $ids_joueurs = array_keys($json_partie["joueurs"]);//on récupère la liste des indices des joueurs pour les scriptes
+    if ($json_partie["numero_tour"] == 0) //si le tour vient de passer au serveur
     {
-      $ids_joueurs = array_keys($json_partie["joueurs"]);//on récupère la liste des indices des joueurs
-      if ($json_partie["numero_joueur_actuel"] == 0) //si le dernier joueur est le serveur
-      {
-        $json_partie["numero_joueur_actuel"] = $ids_joueurs[0];//on met le numero_joueur_actuel sur le premier joueur
-      }else{
-        $i = 0;
-        $continue = true;
-        while($continue&&$i < count($ids_joueurs))//on parcourt la liste des identifiants de joueurs
-        {
-          if($ids_joueurs[$i] == $json_partie["numero_joueur_actuel"])//on choisit l'identifiant suivant du joueur actuelle et on arrete la boucle
-          {
-            $continue = false;
-            $json_partie["numero_joueur_actuel"] = $ids_joueurs[($i+1)%count($ids_joueurs)];
-          }
-          $i++;
-        }
-
-    }
-  }else if ($json_partie["numero_tour"] == 0){//si c'est le tour du serveur
-    include($json_regle["eval_zone_jeu"]); //on execute l'evaluation du terrain de jeu
-
+      include($json_regle["eval_zone_jeu"]); //on execute l'evaluation du terrain de jeu
       for($i = 0; $i < count($json_partie["zone_jeu"]); $i++) //on remet la zone de jeu à zero
       {
         $json_partie["zone_jeu"][$i] = -1;
       }
-
-      $jons_partie ["numero_tour"] += 1;
+      $jons_partie ["numero_tour"] += 1;//on incrémente de 1 pour indiquer la fin du tour du serveur
+    }else{//si le tour est encore un tour joueur
+      $i = 0;
+      $continue = true;
+      while($continue&&$i < count($ids_joueurs))//on parcourt la liste des identifiants de joueurs
+      {
+        if($ids_joueurs[$i] == $json_partie["numero_joueur_actuel"])//on choisit l'identifiant suivant du joueur actuelle et on arrete la boucle
+        {
+          $continue = false;
+          $json_partie["numero_joueur_actuel"] = $ids_joueurs[($i+1)%count($ids_joueurs)];
+        }
+        $i++;
+      }
     }
-
-    $jons_partie ["numero_tour"] += 1;
-  }else{
+  }else{//si le tour est un tour spécial on execture les scriptes indiqué dans règle
     if(isset($json_regle["tour_special"]) && $json_regle["tour_special"] != "")
     {
-      include($json_regle["tour_special"])
+      include($json_regle["tour_special"]) //cette fonction doit gérer TOUTE L'EXECUTION DU TOUR
     }
-    $jons_partie ["numero_tour"] += 1;
   }
 
   $newJsonString = json_encode($json_partie, JSON_PRETTY_PRINT);//on encode

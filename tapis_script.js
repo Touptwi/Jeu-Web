@@ -29,13 +29,13 @@ function refresh()
     }).done(function(e) {
       //$("#J").empty(); //on vide la zone du joueur
       //$("#J").css("grid-template-columns","repeat(" + e.main_joueur.length +", 1fr)") //on definit la taille du layout
-      //console.log("refresh log: nombre de carte précédente = " + nombre_carte_prec); 
+      //console.log("refresh log: nombre de carte précédente = " + nombre_carte_prec);
       //console.log("refresh log: nb max = " + Math.max(e.main_joueur.length,nombre_carte_prec) );
       for (let i = 0; i < Math.max(e.main_joueur.length,nombre_carte_prec); i++)
       {
         //console.log("refresh log: numero_div = " + i);
         if(i < e.main_joueur.length) //pour toutes les cartes présente dans la main du joueur
-        {  
+        {
           if($("#J #" + i).length === 0) //si aucune image n'est présente
           {
             $("#J").append("<img class= 'carte' id = '" + i +"' src ='cartes_png/" + e.main_joueur[i] + "' onclick = 'jouer_carte("+i+")'>"); //on les crée
@@ -62,8 +62,7 @@ function refresh()
       $("#zone-jeu").empty();
       for (let i = 0; i < e.zone_jeu.length; i++)
       {
-        $("#zone-jeu").append("<img class= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' onclick = reprendre() >");
-    
+          $("#zone-jeu").append("<img class= 'carte' src ='cartes_png/" + e.zone_jeu[i] + "' onclick = reprendre() >");
       }
 
       //affichage adversaires

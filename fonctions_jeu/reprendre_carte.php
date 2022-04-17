@@ -26,7 +26,7 @@ if($id_joueur == $json_partie["numero_joueur_actuel"])
             $i++;
         }
     }
-    if($json_partie["zone_jeu"] >= 0)
+    if($json_partie["zone_jeu"][$i] >= 0)
     {
         array_push($json_partie["joueurs"][$id_joueur]["main"],$json_partie["zone_jeu"][$i]);
         $json_partie["zone_jeu"][$i] = -1;

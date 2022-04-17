@@ -2,21 +2,23 @@
 
     /**
      * lance une distribution des cartes selon les règles déclaré dans regles.json
-     * 
+     *
      * regles:
      *  "Distribution"
      *      paquets: int le nombre de paquet à realiser
      *      cartes: int le nombre de cartes par paquets
      *      melange: int indique si le paquet doit être melanger au debut de la distribution
      *                  0 pas de melange
-     *                  1 melange systematique avant distribution
-     *                  -1 ne melange le paquet que lors de la première distribution
+     *                  X melange systematique avant distribution
+     *
+     * Pour un contrôle plus précis de la distribution il faudra directement modifer le
+     * code ci dessous
      */
     function distrib($json_partie, $json_regles, &$pioche)
     {
         if(!isset($json_regles["distribution"]["melange"]) || $json_regles["distribution"]["melange"] != 0)
             {
-                shuffle($pioche); 
+                shuffle($pioche);
             }
 
         $paquet_liste = [];
@@ -30,7 +32,7 @@
             $val = array_pop($pioche);
             //$pioche = array_values($pioche);
             array_push($paquet,$val);
-            
+
         }
         array_push($paquet_liste,$paquet);
         }

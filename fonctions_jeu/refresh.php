@@ -20,10 +20,13 @@ $result["zone_jeu"] = [];
 
 foreach($data["zone_jeu"] as $carte)
 {
-  if($carte >= 0 && ($data["visibilite_zone_jeu"] == true || !isset($data["visibilite_zone_jeu"]) )) //si rien n'est indiqué ou que le plateau est marqué visible
-    array_push($result["zone_jeu"],$regle_json["cartes"][$carte]["image"]); // on transmet les cartes au joueur
-  else
-    array_push($result["zone_jeu"],$regle_json["cartes"][0]["image"]);//sinon on ne transmet que des dos de cartes
+  if($carte >= 0)
+  {
+    if(($data["visibilite_zone_jeu"] == true || !isset($data["visibilite_zone_jeu"]) )) //si rien n'est indiqué ou que le plateau est marqué visible
+      array_push($result["zone_jeu"],$regle_json["cartes"][$carte]["image"]); // on transmet les cartes au joueur
+    else
+      array_push($result["zone_jeu"],$regle_json["cartes"][0]["image"]);//sinon on ne transmet que des dos de cartes
+  }
 }
 
 $result["adversaire"] = array();
