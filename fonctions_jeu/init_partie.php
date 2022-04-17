@@ -48,6 +48,7 @@ $paquet_liste = distrib($json_partie,$json_regles,$pioche); //appel a la fonctio
 
 $json_partie['pioche'] = $pioche;
 
+$json_partie["visibilite_zone_jeu"] = true
 $json_partie['zone_jeu'] = [];
 $numero_paquet = 0;
 
