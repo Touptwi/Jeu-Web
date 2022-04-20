@@ -6,11 +6,15 @@
  * Objets Accessibles:
  * numero_partie: le numero de la partie a supprimer
  */
+        $numero_partie = $_GET["numero_partie"];
         $chemin = "../partie_".$numero_partie.".json";
         echo $chemin;
-        
+
         if (isset($json_regle["eval_fin_partie"]) && $json_regle["eval_fin_partie"] != "")
-            include($json_regle["eval_fin_partie"]);
+            if (!include($json_regle["eval_fin_partie"]))
+            {
+              return;
+            }
         if(file_exists($chemin))
         {
             unlink($chemin);

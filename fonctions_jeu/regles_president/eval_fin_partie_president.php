@@ -16,10 +16,9 @@ include("fonctions_jeu/distribution.php");
 
 if($json_partie["nombre_manche"] > 0) //si il reste des manche on relance la partie
 {
-    //TODO METTRE UNE OUVERTURE FERMETURE DE FICHIER PROPRE
-    $json_partie = json_decode(file_get_contents($chemin),true);
+    //pas d'ouverture nécessaire car déjà effectuer dans fin_tour ou le script est appelé
 
-    $json_partie["nombre_partie"] = $json_partie["nombre_partie"] - 1;
+    $json_partie["nombre_manche"] = $json_partie["nombre_manche"] - 1;
 
     if($json_partie["position_generale"] > 3)
     {
@@ -40,7 +39,7 @@ if($json_partie["nombre_manche"] > 0) //si il reste des manche on relance la par
             }
         }
         $json_partie["position_generale"] = 1; //on reinit la position générale à 1
-        distrib($json_partie,$json_regles,$joueurs["pioche"]);
+        distrib($json_partie,$json_regles,$joueurs["pioche"]);//on redistribue les cartes
 
     }else if(isset($json_partie["joueurs"][$id_joueurs]["position"]))//si le joueur n'as pas de position on lui attribue
     {
@@ -49,7 +48,7 @@ if($json_partie["nombre_manche"] > 0) //si il reste des manche on relance la par
     }
 
 
-    return; //on annule la fin de partie
+    return false; //on annule la fin de partie
 
 } //dans le cas contraire on termine la partie correctement
 

@@ -40,7 +40,10 @@
   //si aucun fichier n'est defini dans regles.json alors le joueur peut finir son tour dans tout les cas
   if($json_partie["numero_tour"] >= 0 && isset($json_regle["condition_fin_tour"]) && $json_regle["condition_fin_tour"] != "")
   {
-    include($json_regle["condition_fin_tour"]);
+    if (!include($json_regle["condition_fin_tour"]))
+    {
+      return; //si la condition fin tour a échoué, on s'arrête
+    }
   }
 
 
@@ -56,7 +59,7 @@
       {
         $json_partie["zone_jeu"][$i] = -1;
       }
-      $jons_partie ["numero_tour"] += 1;//on incrémente de 1 pour indiquer la fin du tour du serveur
+      $json_partie["numero_tour"] ++;//on incrémente de 1 pour indiquer la fin du tour du serveur
     }else{//si le tour est encore un tour joueur
       $i = 0;
       $continue = true;
@@ -73,7 +76,7 @@
   }else{//si le tour est un tour spécial on execture les scriptes indiqué dans règle
     if(isset($json_regle["tour_special"]) && $json_regle["tour_special"] != "")
     {
-      include($json_regle["tour_special"]) //cette fonction doit gérer TOUTE L'EXECUTION DU TOUR
+      include($json_regle["tour_special"]); //cette fonction doit gérer TOUTE L'EXECUTION DU TOUR
     }
   }
 

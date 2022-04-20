@@ -232,9 +232,9 @@
     "melange" :1
   },
 
-  "eval_zone_jeu":"relges_president/eval_zone_jeu_president.php",
+  "eval_zone_jeu":"regles_president/eval_zone_jeu_president.php",
 
-  "tour_special":"",
+  "tour_special":"regles_president/tour_special_president.php",
 
   "condition_fin_tour": "regles_president/condition_fin_tour_president.php",
 

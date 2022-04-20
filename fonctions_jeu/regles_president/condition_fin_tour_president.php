@@ -20,7 +20,10 @@
 //si un joueur n'a plus de cartes à la fin de son tour et qu'il ne reste plus qu'un joueur en lice
 if(count($json_partie["joueurs"][$json_partie["numero_joueur_actuel"]]["main"]) == 0 && $json_partie["position_generale"] >= 4)
 {
-    include("fonctions_jeu/fin_partie.php");//on essaie de fermer la partie ou de la relancer
+    if(!include("fonctions_jeu/fin_partie.php"))//on essaie de fermer la partie ou de la relancer
+    {
+      return false;
+    }
 }
 
 if(!isset($json_partie["carte_max"])) //en cas de problème dans l'initialisation on redéclare ce champ
@@ -43,30 +46,29 @@ if( $json_partie["zone_jeu"][$id] >= 1) //si le joueur a joué une carte
 
     if( $json_partie["identique"] >= 2 && $carte_jouée != $json_partie["carte_max"])//si les 2 cartes précedentes étaient identique et que le joueur n'a pas joué la même
     {
-      array_push($json_partie["tchat"],"[ARBITRE]: /!\ Quand 2 cartes identiques sont jouées à la suite vous devez jouer une carte identique ou ne rien jouer");
-      return;
+      array_push($json_partie["tchat"],"[ARBITRE]: Quand 2 cartes identiques sont jouées à la suite vous devez jouer une carte identique ou ne rien jouer");
+      return false;
     }
 
     if($carte_jouée < $json_partie["carte_max"])//si la carte que l'on a joué est plus faible que la carte_max
     {
-        array_push($json_partie["tchat"],"[ARBITRE] /!\ "+$json_partie["joueurs"]["numero_joueur_actuel"]["nom"]+"Vous devez absolument joueur une carte supérieur ou égale à la précédente");
-        return; //on ne termine pas le tour
+        array_push($json_partie["tchat"],"[ARBITRE] ".$json_partie["joueurs"][$json_partie["numero_joueur_actuel"]]["nom"]."Vous devez absolument joueur une carte supérieur ou égale à la précédente");
+        return false; //on ne termine pas le tour
 
     }else{
-        $json_partie["carte_max"] = $carte_jouée;//sinon on met la carte_max à jour
         if($carte_jouée == $json_partie["carte_max"])//si la carte est la même que le joueur précédent
         {
             $json_partie["identique"]++;
         }else{
             $json_partie["identique"] = 1; //sinon on le réinitialise
         }
+        $json_partie["carte_max"] = $carte_jouée;//sinon on met la carte_max à jour
+    }
+
+    if($json_regle["cartes"][$json_partie["zone_jeu"][$id]]["puissance"] == 14) //si le joueur a joué un 2
+    {
+        $json_partie["identique"] = 0;//on remet à zéro le compte de cartes identiques
+        $json_tour["numero_tour"] = 4; //on passe le tour à celui du dernier joueur
     }
 }
-
-if($json_regle["cartes"][$json_partie["zone_jeu"][$id]]["puissance"] == 2) //si le joueur a joué un 2
-{
-    $json_partie["identique"] = 0;//on remet à zéro le compte de cartes identiques
-    $json_tour["numero_tour"] = 4; //on passe le tour à celui du dernier joueur
-}
-
 ?>
