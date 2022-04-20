@@ -25,6 +25,7 @@
   $json_regle = json_decode(file_get_contents("regles.json"),true);
 
   $path_file = "../partie_".$_GET["numero_partie"].".json";
+  $id_joueur = $_GET["id_joueur"];
 
   $json_file = fopen($path_file,"r+");
 
@@ -34,7 +35,7 @@
      http_response_code(409); // conflict
   $jsonString = fread($json_file, filesize($path_file));
   $json_partie = json_decode($jsonString, true);//on recupère le plateau de jeu en associative array
-
+  $continue = true;
   //lors d'un tour classique (serveur ou joueur)
   //si definit, appel le fichier indiquant les conditions pour pouvoir finir son tour
   //si aucun fichier n'est defini dans regles.json alors le joueur peut finir son tour dans tout les cas
@@ -42,6 +43,12 @@
   {
     if (!include($json_regle["condition_fin_tour"]))
     {
+      $newJsonString = json_encode($json_partie, JSON_PRETTY_PRINT);//on encode
+      ftruncate($json_file, 0);//on vide
+      fseek($json_file,0);//on se place au début
+      fwrite($json_file, $newJsonString);//sauvegarde les changements
+      flock($json_file, LOCK_UN);//libère le fichier
+      fclose($json_file);//et on le ferme
       return; //si la condition fin tour a échoué, on s'arrête
     }
   }
@@ -73,7 +80,7 @@
         $i++;
       }
     }
-  }else{//si le tour est un tour spécial on execture les scriptes indiqué dans règle
+  }else{//si le tour est un tour spécial on execute les scripts indiqués dans règles
     if(isset($json_regle["tour_special"]) && $json_regle["tour_special"] != "")
     {
       include($json_regle["tour_special"]); //cette fonction doit gérer TOUTE L'EXECUTION DU TOUR

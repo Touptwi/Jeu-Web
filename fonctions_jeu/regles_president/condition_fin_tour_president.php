@@ -52,7 +52,8 @@ if( $json_partie["zone_jeu"][$id] >= 1) //si le joueur a joué une carte
 
     if($carte_jouée < $json_partie["carte_max"])//si la carte que l'on a joué est plus faible que la carte_max
     {
-        array_push($json_partie["tchat"],"[ARBITRE] ".$json_partie["joueurs"][$json_partie["numero_joueur_actuel"]]["nom"]."Vous devez absolument joueur une carte supérieur ou égale à la précédente");
+        array_push($json_partie["tchat"],"[ARBITRE]: ".$json_partie["joueurs"][$json_partie["numero_joueur_actuel"]]["nom"]."Vous devez absolument joueur une carte supérieur ou égale à la précédente");
+        echo "arrêt";
         return false; //on ne termine pas le tour
 
     }else{
@@ -67,8 +68,19 @@ if( $json_partie["zone_jeu"][$id] >= 1) //si le joueur a joué une carte
 
     if($json_regle["cartes"][$json_partie["zone_jeu"][$id]]["puissance"] == 14) //si le joueur a joué un 2
     {
+        echo "2 posé";
         $json_partie["identique"] = 0;//on remet à zéro le compte de cartes identiques
-        $json_tour["numero_tour"] = 4; //on passe le tour à celui du dernier joueur
+        $json_partie["carte_max"] = 0;
+        $json_partie["numero_tour"] = 4; //on passe le tour à celui du dernier joueur
+        $json_partie["numero_joueur_actuel"] = $liste_id_joueurs[abs(($id-1)%4)];
     }
+
+    if(count($json_partie["joueurs"][$id_joueur]["main"]) == 0)
+    {
+      $json_partie["joueurs"][$id_joueur]["position"] = $json_partie["position_generale"];
+      $json_partie["position_generale"] = $json_partie["position_generale"] + 1;
+    }
+}else{
+  $json_partie["identique"] = 0;
 }
 ?>
