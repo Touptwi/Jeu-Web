@@ -59,7 +59,7 @@ if( $json_partie["zone_jeu"][$id] >= 1) //si le joueur a joué une carte
     }else{
         if($carte_jouée == $json_partie["carte_max"])//si la carte est la même que le joueur précédent
         {
-            $json_partie["identique"]++;
+            $json_partie["identique"] = ($json_partie["identique"]+1)%4;
         }else{
             $json_partie["identique"] = 1; //sinon on le réinitialise
         }

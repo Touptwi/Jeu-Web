@@ -1,0 +1,40 @@
+{
+    "joueurs": {
+        "1405": {
+            "nom": "",
+            "niveau": "D\u00e9butant",
+            "main": [
+                108,
+                204,
+                303,
+                311,
+                107,
+                402,
+                109,
+                111,
+                304,
+                305,
+                105,
+                113
+            ],
+            "plis": []
+        }
+    },
+    "numero_joueur_actuel": null,
+    "numero_tour": 1,
+    "pioche": [
+        202
+    ],
+    "visibilite_zone_jeu": true,
+    "zone_jeu": [
+        -1
+    ],
+    "notification": [],
+    "tchat": [
+        "[ARBITRE]:  vous devez absolument jouer une carte sup\u00e9rieure ou \u00e9gale \u00e0 la pr\u00e9c\u00e9dente"
+    ],
+    "identique": 0,
+    "position_generale": 1,
+    "carte_max": 0,
+    "nombre_manche": 3
+}

@@ -1,0 +1,116 @@
+{
+    "joueurs": {
+        "1035": {
+            "nom": "Samuel",
+            "niveau": "Expert",
+            "main": [
+                203,
+                103,
+                408,
+                405,
+                407,
+                402,
+                305,
+                304,
+                302,
+                205,
+                307
+            ],
+            "plis": []
+        },
+        "177": {
+            "nom": "Guest",
+            "niveau": "D\u00e9butant",
+            "main": [
+                311,
+                406,
+                111,
+                306,
+                212,
+                105,
+                312,
+                313,
+                210,
+                108
+            ],
+            "plis": []
+        },
+        "895": {
+            "nom": "Guest2",
+            "niveau": "D\u00e9butant",
+            "main": [
+                301,
+                308,
+                102,
+                303,
+                201,
+                208,
+                209,
+                409,
+                112,
+                104,
+                107,
+                207
+            ],
+            "plis": []
+        },
+        "347": {
+            "nom": "Guest3",
+            "niveau": "D\u00e9butant",
+            "main": [
+                410,
+                401,
+                211,
+                404,
+                202,
+                204,
+                109,
+                403,
+                206,
+                110,
+                310,
+                411
+            ],
+            "plis": []
+        }
+    },
+    "numero_joueur_actuel": 177,
+    "numero_tour": 2,
+    "pioche": [
+        106,
+        309,
+        412,
+        413,
+        213,
+        113
+    ],
+    "visibilite_zone_jeu": true,
+    "zone_jeu": [
+        -1,
+        101,
+        -1,
+        -1
+    ],
+    "notification": [],
+    "tchat": [
+        "[ARBITRE]: Guest vous devez absolument jouer une carte sup\u00e9rieure ou \u00e9gale \u00e0 la pr\u00e9c\u00e9dente",
+        "[ARBITRE]: Quand 2 cartes identiques sont jou\u00e9es \u00e0 la suite vous devez jouer une carte identique ou ne rien jouer",
+        "[ARBITRE]: Quand 2 cartes identiques sont jou\u00e9es \u00e0 la suite vous devez jouer une carte identique ou ne rien jouer",
+        "[ARBITRE]: Quand 2 cartes identiques sont jou\u00e9es \u00e0 la suite vous devez jouer une carte identique ou ne rien jouer",
+        "[ARBITRE]: Quand 2 cartes identiques sont jou\u00e9es \u00e0 la suite vous devez jouer une carte identique ou ne rien jouer",
+        "[ARBITRE]: Quand 2 cartes identiques sont jou\u00e9es \u00e0 la suite vous devez jouer une carte identique ou ne rien jouer",
+        "[ARBITRE]: Quand 2 cartes identiques sont jou\u00e9es \u00e0 la suite vous devez jouer une carte identique ou ne rien jouer",
+        "[ARBITRE]: Quand 2 cartes identiques sont jou\u00e9es \u00e0 la suite vous devez jouer une carte identique ou ne rien jouer",
+        "[ARBITRE]: Quand 2 cartes identiques sont jou\u00e9es \u00e0 la suite vous devez jouer une carte identique ou ne rien jouer",
+        "[ARBITRE]: Quand 2 cartes identiques sont jou\u00e9es \u00e0 la suite vous devez jouer une carte identique ou ne rien jouer",
+        "Guest: <img src ='cartes_png\/carte_Coeurs_6.png'>",
+        "Guest: Est-ce que la carte <img src ='cartes_png\/carte_Coeurs_1.png'> est bien \u00e0 jouer ?",
+        "[ARBITRE]: Guest vous devez absolument jouer une carte sup\u00e9rieure ou \u00e9gale \u00e0 la pr\u00e9c\u00e9dente",
+        "Samuel: ...",
+        "Guest2: test"
+    ],
+    "identique": 0,
+    "position_generale": 1,
+    "carte_max": 12,
+    "nombre_manche": 3
+}
