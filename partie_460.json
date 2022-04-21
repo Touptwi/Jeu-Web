@@ -1,0 +1,39 @@
+{
+    "joueurs": {
+        "1492": {
+            "nom": "test",
+            "niveau": "D\u00e9butant",
+            "main": [
+                407,
+                306,
+                305,
+                308,
+                201,
+                210,
+                212,
+                107,
+                207,
+                108,
+                112,
+                301,
+                303
+            ],
+            "plis": []
+        }
+    },
+    "numero_joueur_actuel": 1492,
+    "numero_tour": 3,
+    "pioche": [],
+    "visibilite_zone_jeu": true,
+    "zone_jeu": [
+        -1
+    ],
+    "notification": [],
+    "tchat": [
+        "[ARBITRE]: testVous devez absolument joueur une carte sup\u00e9rieur ou \u00e9gale \u00e0 la pr\u00e9c\u00e9dente"
+    ],
+    "identique": 1,
+    "position_generale": 1,
+    "carte_max": 13,
+    "nombre_manche": 3
+}

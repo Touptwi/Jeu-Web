@@ -52,7 +52,7 @@ if( $json_partie["zone_jeu"][$id] >= 1) //si le joueur a joué une carte
 
     if($carte_jouée < $json_partie["carte_max"])//si la carte que l'on a joué est plus faible que la carte_max
     {
-        array_push($json_partie["tchat"],"[ARBITRE]: ".$json_partie["joueurs"][$json_partie["numero_joueur_actuel"]]["nom"]."Vous devez absolument joueur une carte supérieur ou égale à la précédente");
+        array_push($json_partie["tchat"],"[ARBITRE]: ".$json_partie["joueurs"][$json_partie["numero_joueur_actuel"]]["nom"]." vous devez absolument jouer une carte supérieure ou égale à la précédente");
         echo "arrêt";
         return false; //on ne termine pas le tour
 
